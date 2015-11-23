@@ -1,18 +1,16 @@
-var initPage = function() {
+var initPage = function () {
 
 };
 
-var didEnterForestage = function() {
+var didEnterForestage = function () {
 
 };
 
-var siwtchToLogin = function() {
-    this.storyboard.switchTo('login-loginPage', {
-        'login': "value"
-    });
+var siwtchToLogin = function () {
+    this.storyboard.switchTo('login-loginPage');
 };
 
-var siwtchToRegister = function() {
+var siwtchToRegister = function () {
     this.storyboard.switchTo('login-registerPage');
 };
 

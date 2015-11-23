@@ -1,5 +1,14 @@
+// var AdminPlatform = function() {
+//     var admin = this;
+//     this.sessions = [];
+//     this.token = $.accessToken;
+//     this.account = null;
+// };
+
+// var $myApp = new AdminPlatform();
 
 $.uiReady(function() {
+
 
     $.myApp = new CoolCTO();
 
@@ -14,45 +23,59 @@ $.uiReady(function() {
     content = $.currentActivity.buildStoryboard("#main-container", $.myApp.storyboard.initNavbar(header, bottom, 64), {
 
         "didPageEnterForestage": function(storyboard, pageID, data, options) {
+            
+            var storyboardCache;
 
-            var cache = {
-                channelData: outputChannels(storyboard),
-                channelActivity: storyboard.channel
-            }
+            if (!localStorage.storyboardCache) {
+                storyboardCache = {
+                    "channelActivity": "",
+                    "channel": {}
+                }
+            } else {
+                storyboardCache = JSON.parse(localStorage.storyboardCache);
+            };
 
-            localStorage.storyboardCache = JSON.stringify(cache);
+            storyboardCache.channelActivity = storyboard.channel;
+
+            if (!storyboardCache.channel[storyboard.channel]) {
+                storyboardCache.channel[storyboard.channel] = [];
+            };
+
+            storyboardCache.channel[storyboard.channel].push(location.href);
+
+            localStorage.storyboardCache = JSON.stringify(storyboardCache);
+
+            // var cache = {
+            //     channelData: outputChannels(storyboard),
+            //     channelActivity: storyboard.channel
+            // }
+
+            // localStorage.storyboardCache = JSON.stringify(cache);
 
         },
         "willSwitchToStartPage": function(storyboard) {
 
             if (localStorage.storyboardCache) {
-                // delete storyboard.options.startPageID;
+                console.log(JSON.parse(localStorage.storyboardCache));
+            }
 
-                var cache = JSON.parse(localStorage.storyboardCache);
-                var channelActivity = cache.channelData[cache.channelActivity].stack;
+            // if (localStorage.storyboardCache) {
+            //     delete storyboard.options.startPageID;
 
-                channelActivity.forEach(function(page) {
-                    // storyboard.switchTo(page.id, page.data.settings.data);
-                });
+            //     var cache = JSON.parse(localStorage.storyboardCache);
+            //     console.log(cache);
+            //     var channelActivity = cache.channelData[cache.channelActivity].stack;
+            //     // var pageActivity = channelActivity[channelActivity.length - 1];
+            //     var pageActivity = channelActivity.pop();
+            //     storyboard.channel = cache.channelActivity;
+            //     storyboard.channels = cache.channelData;
 
-                // var pageActivity = channelActivity[channelActivity.length - 1];
-                // var pageActivity = channelActivity.pop();
-                // storyboard.channel = cache.channelActivity;
-                // storyboard.channels = cache.channelData;
-
-                // storyboard.switchTo(pageActivity.id);
-            };
+            //     storyboard.switchTo(pageActivity.id);
+            // };
 
 
             // storyboard.channels = cache;
             // storyboard.channel = localStorage.storyboardCache.channel;
-        },
-        "willPageBackwardDataDecorated": function(storyboard, page, data) {
-            if (page.isReset) {
-                console.log(page.id);
-                var cache = storyboard.channels[storyboard.channel].stack.pop;
-                storyboard.switchTo('login-loginPage');
-            };
         }
 
     });
@@ -62,34 +85,33 @@ $.uiReady(function() {
 var outputChannels = function(storyboard) {
     var cacheObj = {};
 
-    Object.keys(storyboard.channels).forEach(function(key) {
+    // Object.keys(storyboard.channels).forEach(function(key) {
 
-        cacheObj[key] = {
-            "startPageID": storyboard.channels[key].startPageID,
-            "stack": []
-        }
+    //     cacheObj[key] = {
+    //         "startPageID": storyboard.channels[key].startPageID,
+    //         "stack": []
+    //     }
 
-        storyboard.channels[key].stack.forEach(function(page, index) {
+    //     storyboard.channels[key].stack.forEach(function(page, index) {
 
-            var pageObj = {
-                "isReset": true,
-                "id": page.id,
-                "uuid": page.uuid,
-                "spec": page.spec,
-                "data": {}
-            }
+    //         var pageObj = {
+    //             "id": page.id,
+    //             "uuid": page.uuid,
+    //             "spec": page.spec,
+    //             "data": {}
+    //         }
 
-            Object.keys(page.data).forEach(function(key) {
-                if (key !== 'storyboard' && key !== 'page' && key !== 'functors') {
-                    pageObj.data[key] = page.data[key];
-                };
+    //         Object.keys(page.data).forEach(function(key) {
+    //             if (key !== 'storyboard' && key !== 'page' && key !== 'functors') {
+    //                 pageObj.data[key] = page.data[key];
+    //             };
 
-            });
+    //         });
 
-            cacheObj[key].stack.push(pageObj);
+    //         cacheObj[key].stack.push(pageObj);
 
-        });
-    });
+    //     });
+    // });
 
     return cacheObj;
 }

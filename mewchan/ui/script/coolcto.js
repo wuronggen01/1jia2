@@ -3,28 +3,28 @@ var CoolCTO = function() {
     myApp.storyboard = {
         initNavbar: Navbar
     };
-    myApp.jsonrpc = JsonRPC;
+    // myApp.jsonrpc = JsonRPC;
 }
 
-var JsonRPC = function() {
-    return $.async(function() {
-        var step = this;
-        $.jsonrpc('coolcto.sendActivationCode', [
-            "13122270985"
-        ], function(error, result) {
+// var JsonRPC = function() {
+//     return $.async(function() {
+//         var step = this;
+//         $.jsonrpc('coolcto.sendActivationCode', [
+//             "13122270985"
+//         ], function(error, result) {
 
-            if (error) {
-                error.errorMsg = errorMsg[error.code] ? errorMsg[error.code] : "错误编号未定义";
-                step.reject(error)
-            } else {
-                step.next(result);
-            }
+//             if (error) {
+//                 error.errorMsg = errorMsg[error.code] ? errorMsg[error.code] : "错误编号未定义";
+//                 step.reject(error)
+//             } else {
+//                 step.next(result);
+//             }
 
-        });
-    }).rejected(function(error) {
-        console.log(456);
-    });
-}
+//         });
+//     }).rejected(function(error) {
+//         console.log(456);
+//     });
+// }
 
 /**
  * Init navbar
@@ -122,4 +122,4 @@ var errorMsg = {
     50004: "验证码错误",
     50005: "手机或者邮箱已经存在",
     50006: "昵称已经存在"
-};
+}

@@ -14,9 +14,43 @@
  * @gokercebeci
  */
 
-var burl = "http://clouddev.coolcto.com";
-var appID = "yuki_system_dev";
-var appSecret = "morikawa_yuki";
+// var burl = "http://kirito.coolcto.com";
+// var appID = "sao";
+// var appSecret = "woyoubenzinadebenzi";
+
+var burl = "http://kirito.coolcto.com";
+var appID = "fishhome2";
+var appSecret = "rewfdqcv1324312";
+
+var errorMsg = {
+    30090: "未知错误",
+    30094: "账号已经被禁止登录",
+    30095: "账号已过期",
+    30096: "账号名或者密码为空",
+    30097: "账号没有找到",
+    30098: "账号或者密码错误",
+    30099: "需要登录才能继续",
+    30100: "不正确的图片验证码",
+    30101: "远程登录错误",
+    30191: "账号密码长度错误",
+    30192: "账号已存在",
+    30193: "账号格式错误",
+    30040: "短信验证码错误",
+    30490: "未知系统错误",
+    30491: "游戏服务器错误",
+    30492: "参数错误",
+    30493: "登录身份错误",
+    30500: "不能重复加入比赛",
+    30501: "比赛没有找到",
+    30502: "Mew币不足",
+    30503: "已达人数上限",
+    30504: "已经开始了比赛",
+    30505: "已经结束了比赛",
+    30506: "玩家并没有加入这场比赛",
+    30507: "叫你增加赌注不是减少啊，混蛋！",
+    30602: "交易参数错误",
+    30192: "账号已存在"
+};
 
 (function() {
 
@@ -1610,7 +1644,12 @@ $.extend({
                         "other-app-secret": (baseAppSecret ? baseAppSecret : "")
                     },
                     success: function(data, status) {
-                        callback(data.error, data.result)
+                        if ('function' == typeof callback) {
+                            if (data.error) {
+                                data.error.errorMsg = errorMsg[data.error.code] ? errorMsg[data.error.code] : "错误编号未定义";
+                            }
+                            callback(data.error, data.result)
+                        }
                     }
                 })
             } else {
