@@ -1,0 +1,13 @@
+.storyboard-page {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding: 0 12px;
+    background-color: #F8F8F8;
+}
+
+#btn-sendCode {
+    position: absolute;
+    color: #CCCCCC;
+}

@@ -1,0 +1,42 @@
+<div class="list-block div-space15">
+    <ul>
+        <li>
+            <div class="item-content" tmpl:on-click="inputFocus()">
+                <div class="item-inner">
+                    <div class="item-title label">手机号</div>
+                    <div class="item-input">
+                        <input id="input-account" type="tel" placeholder="请输入您的手机号" />
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="item-content" tmpl:on-click="inputFocus()">
+                <div class="item-inner">
+                    <div class="item-title label">验证码</div>
+                    <div class="item-input">
+                        <input id="input-password" type="tel" placeholder="请输入您的验证码" />
+                    </div>
+                    <div class="item-btn">
+                        <div id="btn-sendCode" class="touchEvent" tmpl:on-click="sendCode()">重新发送(60)</div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="list-block div-space15">
+    <ul>
+        <li>
+            <div class="item-content" tmpl:on-click="inputFocus()">
+                <div class="item-inner">
+                    <div class="item-title label">密&nbsp;&nbsp;&nbsp;码</div>
+                    <div class="item-input">
+                        <input id="input-password" type="password" placeholder="请输入6-32位字母或数字" />
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<div id="btn-reset" class="form-item-btn div-space15 touchEvent" tmpl:on-click="reset()">完成</div>

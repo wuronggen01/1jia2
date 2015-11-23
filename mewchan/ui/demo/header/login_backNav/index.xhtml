@@ -1,0 +1,7 @@
+<!-- Nav DIV -->
+<div id="NavigationBar">
+    <div id="NavItemLeft" class="NavItem backIcon touchEvent" style="background-image: url(${env('page.res')}back.png);" template:on-click="onLeftButtonClick()"></div>
+    <div id="NavItemRight" class="NavItem backIcon touchEvent ${if(rightButtonText, '', 'sysHide')}" template:on-click="onRightButtonClick()">${default(rightButtonText, '')}</div>
+    <div id="NavItemCenter">${contentButtonText}</div>
+</div>
+<div id="NavBottomShadow" style="background-image: url(${env('page.res')}NavBottomShadow.png);"></div>

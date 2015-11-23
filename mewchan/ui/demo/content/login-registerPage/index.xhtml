@@ -1,0 +1,65 @@
+<div class="list-block div-space15">
+    <ul>
+        <li>
+            <div class="item-content" tmpl:on-click="inputFocus()">
+                <div class="item-inner">
+                    <div class="item-title label">手机号</div>
+                    <div class="item-input">
+                        <input id="input-account" type="tel" placeholder="请输入您的手机号" />
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="item-content" tmpl:on-click="inputFocus()">
+                <div class="item-inner">
+                    <div class="item-title label">验证码</div>
+                    <div class="item-input">
+                        <input id="input-password" type="tel" placeholder="请输入您的验证码" />
+                    </div>
+                    <div class="item-btn">
+                        <div id="btn-sendCode" class="touchEvent" tmpl:on-click="sendCode()">重新发送(60)</div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="list-block div-space15">
+    <ul>
+        <li>
+            <div class="item-content" tmpl:on-click="inputFocus()">
+                <div class="item-inner">
+                    <div class="item-title label">昵&nbsp;&nbsp;&nbsp;称</div>
+                    <div class="item-input">
+                        <input id="input-account" type="text" placeholder="请输入您的昵称" />
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="item-content" tmpl:on-click="inputFocus()">
+                <div class="item-inner">
+                    <div class="item-title label">密&nbsp;&nbsp;&nbsp;码</div>
+                    <div class="item-input">
+                        <input id="input-password" type="password" placeholder="请输入6-32位字母或数字" />
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<div id="btn-login" class="form-item-btn div-space15 touchEvent" tmpl:on-click="register()">注册</div>
+<div class="option-line div-space15">
+    <!-- style="${env('page.res')}form-point-${if(isAgree,'select','normal')}.png" -->
+    <div id="sel-clause" style="background-image:url(${env('page.res')}form-point-${if(isAgree,'select','normal')}.png)" class="form-lab-sel touchEvent">我已阅读并同意</div>
+    <div id="btn-clause" class="form-lab-btn touchEvent" tmpl:on-click="switchToClause()">使用条款</div>
+    <div id="btn-login" class="form-lab-btn touchEvent" tmpl:on-click="switchToLogin()">直接登陆>></div>
+</div>
+<div id="social-block">
+    <div class="social-title app-BGColor">社交账号登陆</div>
+    <div class="social-line divSpace20">
+        <img class="social-item teachEvent" src="${env('page.res')}wechat.png" />
+        <img class="social-item teachEvent" src="${env('page.res')}wechat.png" />
+    </div>
+</div>

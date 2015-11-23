@@ -1,0 +1,32 @@
+.storyboard-page {
+    background-size: 100%;
+    width: 100%;
+    height: 100%;
+    background-image: url(demo/content/login-startPage/res/startPageBg.jpg);
+}
+
+#botton {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 44px;
+    display: -webkit-box;
+}
+
+#botton .botton_btn {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    color: #FFF;
+    font-size: 15px;
+    line-height: 44px;
+    text-align: center;
+}
+
+#botton #login_btn {
+    background-color: #16A1EF;
+}
+
+#botton #register_btn {
+    background-color: #333333;
+}

@@ -1,0 +1,58 @@
+.storyboard-page {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding: 0 12px;
+    background-color: #F8F8F8;
+}
+
+.option-line {
+    position: relative;
+    width: 100%;
+}
+
+.option-line #btn-reset {
+    position: absolute;
+    left: 0;
+}
+
+.option-line #btn-register {
+    position: absolute;
+    right: 0;
+}
+
+#social-block {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 20px;
+}
+
+#social-block:before {
+    content: "";
+    position: relative;
+    top: 7px;
+    height: 1px;
+    width: 100%;
+    display: block;
+    background-color: #C8C7CC;
+}
+
+#social-block .social-title {
+    position: relative;
+    text-align: center;
+    width: 100px;
+    margin: auto;
+    color: #CCC;
+}
+
+#social-block .social-line {
+    height: 60px;
+    text-align: center;
+}
+
+#social-block .social-item {
+	width: 60px;
+	height: 60px;
+}
