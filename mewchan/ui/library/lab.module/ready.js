@@ -10,7 +10,9 @@ $(function () {
 		uiKittyURL = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ":" + window.location.port  : "") + defaultUIKittyInterface;
 	}
 
-	$.uiKitty = new $.HTTPKittyClient(uiKittyURL);
+	$.uiKitty = new $.HTTPKittyClient(uiKittyURL,{
+		"logLevel" : "info"
+	});
 	$.uiReadyStatus    = "READY";
 	$.uiReadyListeners.forEach(function(listener){
 		try{

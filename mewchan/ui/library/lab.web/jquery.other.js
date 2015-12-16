@@ -97,25 +97,6 @@ $(function () {
                 {
                     "path": "/library/lab.common/cache_pool.js",
                     "map": { "CachePool": "" }
-                },
-                "/library/lab.dom/template.js",
-                "/library/lab.dom/browser.js",
-                "/library/lab.dom/xml.js",
-                "/library/lab.dom/reinit.js",
-                "/library/lab.dom/transition.js",
-                "/library/lab.dom/position.js",
-                {
-                    "path": "/library/lab.dom/storyboard.js",
-                    "map": { "Storyboard": "" }
-                },
-                "/library/lab.dom/storyboard.animation.js",
-                {
-                    "path": "/library/lab.dom/activity.js",
-                    "map": { "currentActivity": "" }
-                },
-                {
-                    "path": "/library/lab.dom/coolcto.js",
-                    "map": { "CoolFramework": "" }
                 }
             ],
             function (error) {
@@ -130,12 +111,12 @@ $(function () {
 
     if (__filename.indexOf("/library/lab.web/jquery.js") === -1) {
 
-        $.loadResourcePackage(window.packageURL ? window.packageURL : "/script/jquery.json", function (error) {
+        $.loadResourcePackage(window.packageURL ? window.packageURL : "/script/jquery.other.json", function (error) {
 
             if (error) {
                 console.error(error);
             }
-            
+
             loaded();
         });
 

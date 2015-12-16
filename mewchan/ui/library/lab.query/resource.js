@@ -254,7 +254,7 @@ $(function () {
 
     $.loadResourcePackage = function (path, callback) {
 
-        if (!/^[a-z\-]:\/\//.test(path)) {
+        if (!/^[a-z\-]+:\/\//.test(path)) {
             path = (document.documentURI.split("#")[0].split("?")[0].split("/").slice(0, -1).join("/") + path)
                 .replace(/\/\.\//g, "/")
                 .replace(/\/[^\/]+\/\.\.\//g, "/");
@@ -275,7 +275,7 @@ $(function () {
                     if (subpath[0] !== "/") {
                         url = path.split("/").slice(0, -1).join("/") + subpath;
                     } else {
-                        url = path.split("/").slice(0, 3).join("/") + subpath
+                        url = document.documentURI.split("#")[0].split("?")[0].split("/").slice(0, -1).join("/") + subpath;
                     }
 
                     url = url.replace(/\/\.\//g, "/").replace(/\/[^\/]+\/\.\.\//g, "/");

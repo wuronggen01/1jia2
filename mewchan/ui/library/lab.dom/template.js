@@ -1,6 +1,10 @@
+$.template.namespaceURI = "http://project.spiritate.org/template";
+
 $.template.xnamespaceURI = "http://project.spiritate.org/templatex";
 
 $.template.external = {};
+
+$.template.safeEventQueue = {};
 
 $.template.parsers["text/html"] = function(template, parameters, options) {
 
@@ -214,7 +218,7 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
 
     };
 
-    var process = function(parentElement, template, parameters, options) {
+    var process = function(parentElement, template, parameters, options, parentNodes) {
 
         var appendChildNodes = function(nodes) {
 
@@ -261,8 +265,13 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
         var getAttributeValue = function(parameters, node, name, filler) {
 
             var attribute = node.getAttribute(name);
+
             if (!attribute) {
                 attribute = "";
+            }
+
+            if (attribute.substr(0,2) == '${' && attribute.substr(attribute.length - 1) == '}' ){
+                attribute = attribute.substr(2,attribute.length - 3);
             }
 
             var value = $.template.execute(attribute, parameters, options);
@@ -301,7 +310,7 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
 
                                     var nodes = [];
 
-                                    var lastCaseNode = null;
+                                    var lastIfNode = null;
 
                                     var newFillers = [];
 
@@ -312,65 +321,117 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
                                         var condition = getAttributeValue(parameters, template, "test");
 
                                         if (condition) {
-                                            var animation = getAnimation(template, options);
 
-                                            var span = document.createElement(getAnimationTag(nodes));
-                                            span.className = "template-animation";
+                                            if (lastIfNode != template) {
 
-                                            getParentElement(parentElement).insertBefore(span, placeholderNode);
+                                                var animation = getAnimation(template, options);
 
-                                            nodes.forEach(function(node) {
-                                                span.appendChild(node);
-                                            });
+                                                var span = document.createElement(getAnimationTag(nodes));
+                                                span.className = "template-animation";
 
-                                            var action = function() {
-
-                                                while (span.firstChild) {
-                                                    span.removeChild(span.firstChild);
-                                                }
-
-                                                nodes = [];
-
-                                                var lastFillers = currentFillers;
-                                                newFillers = [];
-                                                currentFillers = newFillers;
-
-                                                [].slice.call(template.childNodes, 0).forEach(function(childNode2) {
-                                                    process(parentElement, childNode2, parameters, options).forEach(function(newNode) {
-
-                                                    	$(newNode).detach();
-
-                                                        nodes.push(newNode);
-
-                                                    });
-                                                });
-
-                                                currentFillers = lastFillers;
+                                                getParentElement(parentElement).insertBefore(span, placeholderNode);
 
                                                 nodes.forEach(function(node) {
                                                     span.appendChild(node);
                                                 });
 
-                                                clearNode(span);
+                                                var action = function() {
 
-                                            };
+                                                    while (span.firstChild) {
+                                                        span.removeChild(span.firstChild);
+                                                    }
 
-                                            var complete = function() {
+                                                    nodes = [];
 
-                                                nodes.forEach(function(node) {
-                                                    getParentElement(parentElement).insertBefore(node, placeholderNode);
-                                                });
+                                                    var lastFillers = currentFillers;
+                                                    newFillers = [];
+                                                    currentFillers = newFillers;
 
-                                                clearNode(getParentElement(parentElement));
+                                                    [].slice.call(template.childNodes, 0).forEach(function(childNode2) {
+                                                        process(parentElement, childNode2, parameters, options, nodes).forEach(function(newNode) {
 
-                                                $(span).detach();
+                                                            $(newNode).detach();
 
-                                                next();
+                                                            nodes.push(newNode);
 
-                                            };
+                                                        });
+                                                    });
 
-                                            action();
-                                            complete();
+                                                    currentFillers = lastFillers;
+
+                                                    nodes.forEach(function(node) {
+                                                        span.appendChild(node);
+                                                    });
+
+                                                    clearNode(span);
+
+                                                };
+
+                                                var complete = function() {
+
+                                                    nodes.forEach(function(node) {
+                                                        getParentElement(parentElement).insertBefore(node, placeholderNode);
+                                                    });
+
+                                                    clearNode(getParentElement(parentElement));
+
+                                                    $(span).detach();
+
+                                                    var callbacked = newFillers.length;
+
+                                                    if (callbacked == 0) {
+                                                        next();
+                                                    } else {
+                                                        newFillers.forEach(function(filler) {
+                                                            filler(parameters, options, function() {
+
+                                                                --callbacked;
+
+                                                                if (callbacked === 0) {
+                                                                    next();
+                                                                }
+
+                                                            });
+                                                        });
+                                                    }
+
+                                                };
+
+                                                if (animation.animated && (!firstTime)) {
+                                                    $.template.animations[animation.name](animation.duration,
+                                                        action,
+                                                        $(span),
+                                                        $(span),
+                                                        complete);
+                                                } else {
+                                                    action();
+                                                    complete();
+                                                }
+                                            } else {
+                                                var callbacked = newFillers.length;
+
+                                                if (callbacked == 0) {
+                                                    next();
+                                                } else {
+                                                    newFillers.forEach(function(filler) {
+                                                        filler(parameters, options, function() {
+
+                                                            --callbacked;
+
+                                                            if (callbacked === 0) {
+                                                                next();
+                                                            }
+
+                                                        });
+                                                    });
+                                                    
+                                                }
+
+                                                lastIfNode = template;
+                                            }
+
+
+
                                         } else {
 
                                             var animation = getAnimation(template, options);
@@ -408,9 +469,21 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
 
                                             };
 
-                                            action();
-                                            complete();
+                                            if (animation.animated && (!firstTime)) {
+                                                $.template.animations[animation.name](animation.duration,
+                                                    action,
+                                                    $(span),
+                                                    $(span),
+                                                    complete);
+                                            } else {
+                                                action();
+                                                complete();
+                                            }
+
+                                            lastIfNode = null;
                                         }
+
+
 
                                     };
 
@@ -445,6 +518,7 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
                                     var firstTime = true;
 
                                     var filler = function(parameters, options, next) {
+
 
                                         var condition = getAttributeValue(parameters, template, "condition");
 
@@ -486,9 +560,9 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
                                                             currentFillers = newFillers;
 
                                                             [].slice.call(childNode.childNodes, 0).forEach(function(childNode2) {
-                                                                process(parentElement, childNode2, parameters, options).forEach(function(newNode) {
+                                                                process(parentElement, childNode2, parameters, options, nodes).forEach(function(newNode) {
 
-                                                                	$(newNode).detach();
+                                                                    $(newNode).detach();
 
                                                                     nodes.push(newNode);
 
@@ -534,7 +608,7 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
 
                                                         var callbacked = newFillers.length;
 
-                                                        if (callbacked == 0){
+                                                        if (callbacked == 0) {
                                                             next();
                                                         } else {
                                                             newFillers.forEach(function(filler) {
@@ -644,13 +718,51 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
                                         var itemVariantName = template.getAttribute("item-variant-name");
                                         if (!/^[a-zA-Z\$_][a-zA-Z0-9\$_]*$/g.test(itemVariantName) ||
                                             (itemVariantName && (itemVariantName.length == 0))) {
-                                            itemVariantName = undefined;
+                                            itemVariantName = "item";
                                         }
+
+                                        if (!itemVariantName) {
+                                            itemVariantName = "item";
+                                        }
+
 
                                         var indexVariantName = template.getAttribute("index-variant-name");
                                         if (!/^[a-zA-Z\$_][a-zA-Z0-9\$_]*$/g.test(indexVariantName) ||
                                             (indexVariantName && (indexVariantName.length == 0))) {
-                                            indexVariantName = undefined;
+                                            indexVariantName = "index";
+                                        }
+
+                                        if (!indexVariantName) {
+                                            indexVariantName = "index";
+                                        }
+
+                                        var listVariantName = template.getAttribute("list-variant-name");
+                                        if (!/^[a-zA-Z\$_][a-zA-Z0-9\$_]*$/g.test(indexVariantName) ||
+                                            (listVariantName && (indexVariantName.length == 0))) {
+                                            listVariantName = "list";
+                                        }
+
+                                        if (!listVariantName) {
+                                            listVariantName = "list";
+                                        }
+
+                                        var sortScript = template.getAttribute("sort");
+
+                                        if (sortScript) {
+                                            var sortParameters = {};
+
+                                            for (var name in parameters) {
+                                                sortParameters[name] = parameters[name];
+                                            }
+
+                                            sortParameters["^"] = parameters;
+
+                                            if (listVariantName) {
+                                                sortParameters[listVariantName] = list;
+                                            }
+
+                                            $.template.execute(sortScript, sortParameters, options);
+
                                         }
 
                                         nodes = [];
@@ -819,6 +931,7 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
                                                     getParentElement(parentElement).insertBefore(fakeContainerNode, supernode);
 
                                                     if (animation.animated) {
+
                                                         lastActions.push(function() {
 
                                                             $.delay(-1, function() {
@@ -836,7 +949,7 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
 
                                                                 var complete = function() {
 
-                                                                	$(fakeContainerNode).detach();
+                                                                    $(fakeContainerNode).detach();
 
                                                                     lastPair.nodes.forEach(function(node) {
                                                                         getParentElement(parentElement).insertBefore(node, supernode);
@@ -859,7 +972,7 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
                                                         });
                                                     } else {
 
-                                                    	$(fakeContainerNode).detach();
+                                                        $(fakeContainerNode).detach();
 
                                                         lastPair.nodes.forEach(function(node) {
                                                             getParentElement(parentElement).insertBefore(node, supernode);
@@ -876,23 +989,31 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
                                                 var callbacked2 = lastPair.fillers.length;
                                                 var animationFinished = false;
 
-                                                lastPair.fillers.forEach(function(filler) {
+                                                if ((callbacked2 === 0) && animationFinished) {
+                                                    --callbacked;
 
-                                                    filler(newParameters, options, function() {
+                                                    if (callbacked === 0) {
+                                                        next();
+                                                    }
+                                                } else {
+                                                    lastPair.fillers.forEach(function(filler) {
 
-                                                        --callbacked2;
+                                                        filler(newParameters, options, function() {
 
-                                                        if ((callbacked2 === 0) && animationFinished) {
-                                                            --callbacked;
+                                                            --callbacked2;
 
-                                                            if (callbacked === 0) {
-                                                                next();
+                                                            if ((callbacked2 === 0) && animationFinished) {
+                                                                --callbacked;
+
+                                                                if (callbacked === 0) {
+                                                                    next();
+                                                                }
                                                             }
-                                                        }
+
+                                                        });
 
                                                     });
-
-                                                });
+                                                }
 
                                                 newNodePairs.push(lastPair);
 
@@ -955,7 +1076,7 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
                                                 var newNodes = [];
 
                                                 [].slice.call(template.childNodes, 0).forEach(function(childNode) {
-                                                    process(parentElement, childNode, newParameters, options).forEach(function(newNode) {
+                                                    process(parentElement, childNode, newParameters, options, newNodes).forEach(function(newNode) {
 
                                                         nodes.push(newNode);
 
@@ -1041,7 +1162,7 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
                                                 });
 
                                                 var action = function() {
-                                                	$(span).detach();
+                                                    $(span).detach();
                                                 };
 
                                                 lastActions.push(action);
@@ -1119,7 +1240,7 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
                                         var action = function() {
 
                                             childNodes.forEach(function(childNode) {
-                                            	$(childNode).detach();
+                                                $(childNode).detach();
                                             });
 
                                             newChildNodes.forEach(function(childNode) {
@@ -1233,7 +1354,7 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
                                             currentFillers = newFillers;
 
                                             [].slice.call(template.childNodes, 0).forEach(function(childNode) {
-                                                process(parentElement, childNode, newParameters, options).forEach(function(newNode) {
+                                                process(parentElement, childNode, newParameters, options, nodes).forEach(function(newNode) {
                                                     nodes.push(newNode);
                                                 });
                                             });
@@ -1363,7 +1484,7 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
                                             currentFillers = newFillers;
 
                                             [].forEach.call(templateNode.childNodes, function(childNode) {
-                                                process(parentElement, childNode, newParameters, options).forEach(function(newNode) {
+                                                process(parentElement, childNode, newParameters, options, nodes).forEach(function(newNode) {
                                                     nodes.push(newNode);
                                                 });
                                             });
@@ -1501,9 +1622,9 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
 
                             var placeholderNode = document.createTextNode("");
 
-                            appendChildNodes([placeholderNode]);
+                            var outletNode = null;
 
-                            var newFillers = [];
+                            appendChildNodes([placeholderNode]);
 
                             var firstTime = true;
 
@@ -1511,7 +1632,7 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
 
                                 var animation = getAnimation(template, options);
 
-                                $.template.external[localName].call(parameters, template, function(error, value) {
+                                $.template.external[localName].call(parameters, template, function(error, value , outlet ) {
 
                                     if (error) {
 
@@ -1519,44 +1640,66 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
 
                                     } else {
 
-                                    	var lastFillers = currentFillers;
-
                                         $(wrapperNode).append($(value));
 
                                         var newChildNodes = [].slice.call(wrapperNode.childNodes, 0);
 
                                         var span = document.createElement(getAnimationTag(childNodes));
+
                                         span.className = "template-animation";
 
                                         getParentElement(parentElement).insertBefore(span, placeholderNode);
 
                                         childNodes.forEach(function(childNode) {
+
                                             span.appendChild(childNode);
                                         });
 
                                         clearNode(span);
 
+                                        var lastFillers = currentFillers;
+
+                                        var newFillers = [];
+
+                                        currentFillers = newFillers;
+
+                                        var newOutletNode = null;
+
+                                        if (outlet){
+                                            newOutletNode = $(outlet);
+                                        }
 
                                         var action = function() {
 
                                             childNodes.forEach(function(childNode) {
-                                            	$(childNode).detach();
+                                                $(childNode).detach();
                                             });
+
+                                            if (outletNode){
+                                                $(outletNode).detach();
+                                            }
 
                                             newChildNodes.forEach(function(childNode) {
                                                 span.appendChild(childNode);
+                                                if (parentNodes.indexOf(childNode) < 0) {
+                                                    parentNodes.push(childNode);
+                                                }
                                             });
 
                                             clearNode(span);
 
                                             childNodes = newChildNodes;
 
+                                            outletNode = newOutletNode;
+
+                                            currentFillers = lastFillers;
+
                                         };
 
                                         var complete = function() {
 
                                             newChildNodes.forEach(function(childNode) {
-                                            	$(childNode).css('opacity', '1');
+                                                $(childNode).css('opacity', '1');
                                                 $(childNode).removeClass('template-animation');
                                                 getParentElement(parentElement).insertBefore(childNode, placeholderNode);
                                             });
@@ -1565,20 +1708,24 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
 
                                             clearNode(getParentElement(parentElement));
 
+                                            var nodes = childNodes.slice(0);
+
+                                            nodes.unshift(placeholderNode);
+
                                             if (firstTime) {
 
-                                            	firstTime = false;
-                                            	currentFillers = lastFillers;
+                                                firstTime = false;
 
-                                            	next();
+                                                next();
 
                                             } else {
 
-                                            	var callbacked = newFillers.length;
+                                                var callbacked = newFillers.length;
 
                                                 if (callbacked == 0) {
                                                     next();
                                                 } else {
+
                                                     newFillers.forEach(function(filler) {
 
                                                         filler(newParameters, options, function() {
@@ -1586,6 +1733,7 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
                                                             --callbacked;
 
                                                             if (callbacked === 0) {
+
                                                                 next();
                                                             }
 
@@ -1601,15 +1749,17 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
                                         animation.animated = false;
 
                                         if (animation.animated && (!firstTime)) {
+
                                             $.template.animations[animation.name](animation.duration,
                                                 action,
                                                 $(span),
                                                 $(span),
                                                 complete);
+
                                         } else { // first time filler is called
 
-                                            newFillers = [];
-                                            currentFillers = newFillers;
+                                            //newFillers = [];
+                                            //currentFillers = newFillers;
 
                                             action();
                                             complete();
@@ -1622,9 +1772,9 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
 
                             };
 
-                            filler(parameters, options, function() {});
+                            currentFillers.push(filler);
 
-                            newFillers.push(filler);
+                            filler(parameters, options, function() {});
 
                             return [wrapperNode];
 
@@ -1655,7 +1805,16 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
 
                                 if (attributeNode.localName.substring(0, 3) === "on-") {
 
-                                    var eventName = attributeNode.localName.substring(3);
+                                    var eventName;
+                                    var safe = false;
+
+                                    if (attributeNode.localName.substring(3, 8) === "safe-") {
+                                        eventName = attributeNode.localName.substring(8);
+                                        safe = true;
+                                    } else {
+                                        eventName = attributeNode.localName.substring(3);
+                                    }
+
                                     var script = attributeNode.value;
 
                                     var newParameters = parameters;
@@ -1685,7 +1844,38 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
                                         eventParameters["event"] = event;
                                         eventParameters["element"] = node;
 
-                                        $.template.execute(script, eventParameters, options);
+                                        if (safe) {
+                                            var safeAsync = function() {
+                                                return $.async(function() {
+                                                    var step = this;
+                                                    var callbacked = false;
+                                                    var timeout = setTimeout(function() {
+                                                        if (!callbacked) {
+                                                            callbacked = true;
+                                                            step.next();
+                                                        }
+                                                    }, 1500);
+
+                                                    eventParameters["next"] = function() {
+                                                        if (!callbacked) {
+                                                            callbacked = true;
+                                                            step.next();
+                                                            clearTimeout(timeout);
+                                                        }
+                                                    };
+                                                    $.template.execute(script, eventParameters, options);
+                                                });
+                                            }
+                                            if (!$.template.safeEventQueue[eventName]) {
+                                                $.template.safeEventQueue[eventName] = $.async(function() {
+                                                    safeAsync().then(this.next);
+                                                }).finished(function() {
+                                                    delete $.template.safeEventQueue[eventName];
+                                                })
+                                            }
+                                        } else {
+                                            $.template.execute(script, eventParameters, options);
+                                        }
 
                                     });
 
@@ -1716,7 +1906,7 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
                         var hasTextNode = false;
 
                         [].slice.call(template.childNodes, 0).forEach(function(childNode) {
-                            process(node, childNode, parameters, options);
+                            process(node, childNode, parameters, options, []);
                         });
 
                         return appendChildNodes([clearNode(node)]);
@@ -1915,7 +2105,7 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
 
     [].slice.call(xmlDocument.documentElement.childNodes, 0)
         .forEach(function(childNode) {
-            process(documentFragment, childNode, parameters, options);
+            process(documentFragment, childNode, parameters, options, []);
         });
 
     var firstNode = document.createTextNode("");
@@ -2078,25 +2268,28 @@ $.template.parsers["text/html"] = function(template, parameters, options) {
                 newParameters["$t"] = times;
 
             }
-            var fillerBrushed = [];
+            //var fillerBrushed = [];
             parameters = newParameters;
 
-
-            fillers.forEach(function(filler) {
-                fillerBrushed.push(filler.toString());
-            });
+            // fillers.forEach(function(filler) {
+            //     fillerBrushed.push(filler.toString());
+            // });
 
             if (fillers.length > 0) {
 
                 var callbacked = fillers.length;
 
                 fillers.forEach(function(filler) {
+
                     filler(parameters, options, function() {
 
                         --callbacked;
-                        var fuckedIndex = fillerBrushed.indexOf(filler.toString());
-
-                        fillerBrushed.splice(fuckedIndex, 1);
+                        //
+                        // var fuckedIndex = fillerBrushed.indexOf(filler.toString());
+                        //
+                        // fillerBrushed.splice(fuckedIndex, 1);
+                        //
+                        // console.log(fuckedIndex);
 
                         if (callbacked === 0) {
 

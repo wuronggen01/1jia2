@@ -92,7 +92,11 @@ var startListenFromRemote = function startListenFromRemote(kitty) {
 
         kitty.status = IDLE;
 
-        if (mews) {
+        if (mews && Array.isArray(mews)) {
+
+			kitty.logger.info("receiving mew from server : " + kitty.uri);
+
+			kitty.logger.info(mews);
 
 			try{
             	mews.forEach(function(mew) {

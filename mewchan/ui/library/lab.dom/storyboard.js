@@ -315,12 +315,18 @@ var storyboardSwitchNow = function(storyboard, managedQueue, errorCallback, swit
                                 data = {};
                             }
 
+                            page.data.settings.update = data;
+
                             Object.keys(data).forEach(function(key) {
                                 page.data[key] = data[key];
                             });
 
                             if (page.spec.module.exports.willUpdate) {
-                                page.spec.module.exports.willUpdate.call(page, page.data);
+                                try{
+                                    page.spec.module.exports.willUpdate.call(page.data,page);
+                                } catch (ex){
+                                    logger.error(ex);
+                                }
                             }
                             storyboardExecuteDelegate(storyboard, "willUpdatePage", page, page.data);
 
@@ -328,7 +334,11 @@ var storyboardSwitchNow = function(storyboard, managedQueue, errorCallback, swit
                                 page.template.fill(page.data, function() {
 
                                     if (page.spec.module.exports.didUpdate) {
-                                        page.spec.module.exports.didUpdate.call(page, page.data);
+                                        try{
+                                            page.spec.module.exports.didUpdate.call(page.data,page);
+                                        } catch (ex){
+                                            logger.error(ex);
+                                        }
                                     }
                                     storyboardExecuteDelegate(storyboard, "didUpdatePage", page, page.data);
 
@@ -504,6 +514,8 @@ var storyboardSwitchNow = function(storyboard, managedQueue, errorCallback, swit
                 styleSheetAutoPrefixConvertor(storyboard, pageSpec, styleObject);
             }
 
+            pageSpec.styleSource = pageContent.style;
+
         }
 
         if (!pageSpec.templateSource) {
@@ -631,7 +643,7 @@ var storyboardSwitchNow = function(storyboard, managedQueue, errorCallback, swit
 
     }).then(function() {
 
-        logger.debug("fucking load data is the sin of everything : " + page.uuid);
+        logger.debug("fucking load data is the sin of everything : " + page.id + "@" + page.uuid);
 
         var rawData = $.advancedMerge({
             "storyboard": {
@@ -704,33 +716,19 @@ var storyboardSwitchNow = function(storyboard, managedQueue, errorCallback, swit
                     }
 
                 } else {
+
+                    logger.error("Multiple callback for load data is invoked");
+
                     throw new Error("Multiple callback for load data is invoked");
                 }
             });
 
         } else {
 
-            page.data = $.advancedMerge({
-
-                "storyboard": {
-                    "!operation": "assign"
-                },
-
-                "page": {
-                    "!operation": "assign"
-                },
-
-                "settings": {
-                    "!operation": "assign"
-                },
-
-                "functors": {
-                    "!operation": "assign"
-                }
-
-            }, page.data, rawData);
+            page.data = rawData;
 
             storyboardExecuteDelegate(storyboard, 'didPageLoadData', page, rawData);
+
             step.next();
         }
 
@@ -742,46 +740,39 @@ var storyboardSwitchNow = function(storyboard, managedQueue, errorCallback, swit
 
         if (settings.options.action == 'backward') {
 
-            // var actionHandled = false;
-            // var backwardSuggestor = {
-            //     "accept": function() {
-
-            //     },
-            //     "deny": function() {
-
-            //     }
-            // }
-
             storyboardExecuteDelegate(storyboard, "willPageBackwardDataDecorated", page, page.data);
 
             backward(page.data).then(function(decorated) {
 
-                page.data = $.advancedMerge({
+                if (page.data !== decorated){
+                    page.data = $.advancedMerge({
 
-                    "storyboard": {
-                        "!operation": "assign"
-                    },
+                        "storyboard": {
+                            "!operation": "assign"
+                        },
 
-                    "page": {
-                        "!operation": "assign"
-                    },
+                        "page": {
+                            "!operation": "assign"
+                        },
 
-                    "settings": {
-                        "!operation": "assign"
-                    },
+                        "settings": {
+                            "!operation": "assign"
+                        },
 
-                    "functors": {
-                        "!operation": "assign"
-                    }
+                        "functors": {
+                            "!operation": "assign"
+                        }
 
-                }, page.data, decorated);
+                    }, page.data, decorated);
+                }
+
                 storyboardExecuteDelegate(storyboard, "didPageBackwardDataDecorated", page, page.data);
-
                 step.next();
 
             }).rejected(function(error) {
 
                 logger.error(error);
+
                 swstep.reject(error);
                 step.reject(error);
                 errorCallback(error);
@@ -823,6 +814,8 @@ var storyboardSwitchNow = function(storyboard, managedQueue, errorCallback, swit
             "functors": templateOptions.functors
         }, storyboard.commonModule.data, pageSpec.module.data, page.data);
 
+
+
         Object.keys(pageSpec.data).forEach(function(key) {
             if (!page.data.hasOwnProperty(key)) {
                 page.data[key] = $.template.execute(pageSpec.data[key], page.data, templateOptions);
@@ -842,7 +835,6 @@ var storyboardSwitchNow = function(storyboard, managedQueue, errorCallback, swit
                     if (pageSpec.module.exports && pageSpec.module.exports.initPage) {
                         pageSpec.module.exports.initPage.call(page.data, page);
                     }
-
                     storyboardExecuteDelegate(storyboard, "initPage", page);
                 }
                 step.next();
@@ -854,12 +846,14 @@ var storyboardSwitchNow = function(storyboard, managedQueue, errorCallback, swit
         };
 
         try {
+
             if (!page.template) {
                 page.template = $.template(pageSpec.templateSource, page.data, templateOptions);
                 page.template.render(page.dom, complete);
             } else {
                 page.template.fill(page.data, complete);
             }
+
         } catch (ex) {
 
             logger.error(ex);
@@ -925,7 +919,11 @@ var storyboardSwitchNow = function(storyboard, managedQueue, errorCallback, swit
             $(storyboard.dom).append(page.dom);
 
             if (page.spec.module.exports.willEnterForestage) {
-                page.spec.module.exports.willEnterForestage.call(page.data, page);
+                try {
+                    page.spec.module.exports.willEnterForestage.call(page.data, page);
+                } catch (ex) {
+                    logger.error(ex);
+                }
             }
 
             storyboardExecuteDelegate(storyboard, "willPageEnterForestage", page, page.data);
@@ -934,7 +932,11 @@ var storyboardSwitchNow = function(storyboard, managedQueue, errorCallback, swit
 
                 if (lastPage) {
                     if (page.spec.module.exports.willLeaveForestage) {
-                        page.spec.module.exports.willLeaveForestage.call(lastPage.data, lastPage);
+                        try {
+                            page.spec.module.exports.willLeaveForestage.call(lastPage.data, lastPage);
+                        } catch (ex) {
+                            logger.error(ex);
+                        }
                     }
 
                     storyboardExecuteDelegate(storyboard, "willPageLeaveForestage", lastPage, lastPage.data);
@@ -966,7 +968,11 @@ var storyboardSwitchNow = function(storyboard, managedQueue, errorCallback, swit
 
                     if (lastPage) {
                         if (lastPage.spec.module.exports.didLeaveForestage) {
-                            lastPage.spec.module.exports.didLeaveForestage.call(lastPage.data, lastPage);
+                            try {
+                                lastPage.spec.module.exports.didLeaveForestage.call(lastPage.data, lastPage);
+                            } catch (ex) {
+                                logger.error(ex);
+                            }
                         }
 
                         storyboardExecuteDelegate(storyboard, "didPageLeaveForestage", lastPage, lastPage.data);
@@ -984,7 +990,11 @@ var storyboardSwitchNow = function(storyboard, managedQueue, errorCallback, swit
                 }, (lastPage ? $(lastPage.dom) : $()), $(page.dom), function() {
 
                     if (page.spec.module.exports.didEnterForestage) {
-                        page.spec.module.exports.didEnterForestage.call(page.data, page);
+                        try {
+                            page.spec.module.exports.didEnterForestage.call(page.data, page);
+                        } catch (ex) {
+                            logger.error(ex);
+                        }
                     }
 
                     storyboardExecuteDelegate(storyboard, "didPageEnterForestage", page, page.data);
@@ -994,7 +1004,11 @@ var storyboardSwitchNow = function(storyboard, managedQueue, errorCallback, swit
                     pagesToDestroy.forEach(function(page) {
 
                         if (page.spec.module.exports.destroyPage) {
-                            page.spec.module.exports.destroyPage.call(page.data, page);
+                            try {
+                                page.spec.module.exports.destroyPage.call(page.data, page);
+                            } catch (ex) {
+                                logger.error(ex);
+                            }
                         }
 
                         storyboardExecuteDelegate(storyboard, "destoryPage", page, page.data);
@@ -1012,7 +1026,11 @@ var storyboardSwitchNow = function(storyboard, managedQueue, errorCallback, swit
             } else {
 
                 if (page.spec.module.exports.didEnterForestage) {
-                    page.spec.module.exports.didEnterForestage.call(page.data, page);
+                    try {
+                        page.spec.module.exports.didEnterForestage.call(page.data, page);
+                    } catch (ex) {
+                        logger.error(ex);
+                    }
                 }
                 storyboardExecuteDelegate(storyboard, "didPageEnterForestage", page, page.data);
 
@@ -1132,6 +1150,10 @@ var Storyboard = function Storyboard(dom, delegates) {
                 "!valueType": "string",
                 "!defaultValue": "main"
             },
+            "supportsVirtualPage": {
+                "!valueType": "boolean",
+                "!defaultValue": false
+            },
             "fixedSize": {
                 "!valueType": "boolean",
                 "!defaultValue": $(document.body).hasClass('ui-mobile') || $(document.body).hasClass('ui-tablet')
@@ -1241,6 +1263,12 @@ var Storyboard = function Storyboard(dom, delegates) {
                 "true": true,
                 "false": false
             }[$(dom).attr("skip-switch-animation")],
+            "supportsVirtualPage": {
+                "yes": true,
+                "no": false,
+                "true": true,
+                "false": false
+            }[$(dom).attr("supports-virtual-page")],
             "commonLangPath": $(dom).attr("common-lang-path"),
             "commonStylePath": $(dom).attr("common-style-path"),
             "commonScriptPath": $(dom).attr("common-script-path"),
@@ -1434,8 +1462,11 @@ var storyboardExecuteDelegate = function(storyboard, delegateName) {
 
         storyboard.delegate[delegateName].forEach(function(initFunction) {
 
-            initFunction.apply(storyboard, args);
-
+            try{
+                initFunction.apply(storyboard, args);
+            } catch (ex){
+                logger.error(ex);
+            }
         });
 
     }
@@ -1722,8 +1753,6 @@ var initStoryboard = function(storyboard) {
 
                     });
 
-                    storyboard.options.pageSpecs[page.id].data = $.advancedMerge({}, storyboard.commonData, storyboard.options.pageSpecs[page.id].data);
-
                     step.next();
 
                 } else {
@@ -1802,7 +1831,7 @@ var initStoryboard = function(storyboard) {
 
                 step.next();
 
-            }).rejected(this.reject);
+            }).rejected(this.next);
 
         } else {
 
@@ -1878,6 +1907,9 @@ Storyboard.prototype.goBackward = function(data, options) {
         options = {};
     }
 
+    if (!data) {
+        data = {};
+    }
     return this.switchTo(null, data, $.advancedMerge({}, {
         "action": "backward"
     }, options));
@@ -1941,6 +1973,8 @@ Object.defineProperty(Storyboard.prototype, "switchNext", {
 
 var addPageToStoryboard = function(storyboard, pageID, options) {
 
+    options = options ? options : {};
+
     var pathData = {
         "storyboard": storyboard,
         "page": {
@@ -1978,7 +2012,7 @@ var addPageToStoryboard = function(storyboard, pageID, options) {
         }
     });
 
-
+    storyboard.options.pageSpecs[pageID].data = $.advancedMerge({}, storyboard.commonData, storyboard.options.pageSpecs[pageID].data);
 
 }
 
@@ -2072,11 +2106,25 @@ Storyboard.prototype.switchTo = function() {
         }
     }, arguments);
 
-    storyboardExecuteDelegate(storyboard, 'willSwitchToPage', settings.pageID, settings.data, settings.options);
+
+
 
     if (settings.pageID && !storyboard.options.pageSpecs[settings.pageID]) {
-        throw new Error("Page id not found");
+
+        if (storyboard.options.supportsVirtualPage) {
+
+            if (!storyboard.options.pageSpecs[settings.pageID]) {
+                storyboard.options.pageSpecs[settings.pageID] = {};
+            }
+
+            addPageToStoryboard(storyboard, settings.pageID);
+
+        } else {
+            throw new Error("Page id not found");
+        }
     }
+
+    storyboardExecuteDelegate(storyboard, 'willSwitchToPage', settings.pageID, settings.data, settings.options);
 
     if (!settings.pageID) {
         if (settings.options.action === 'backward' || settings.options.action === 'channel') {
@@ -2113,8 +2161,10 @@ Storyboard.prototype.switchTo = function() {
             }
 
             if (backwardAction) {
+
                 backwardAction.call(backwardStep, data);
             } else {
+
                 step.next(data);
             }
 
@@ -2126,6 +2176,9 @@ Storyboard.prototype.switchTo = function() {
         var switchStep = this;
 
         manager.queue[storyboard.id].then(function() {
+
+
+
             try {
                 var switchOperation = {
                     "settings": settings,
@@ -2319,6 +2372,31 @@ $.storyboard.animations["reset"] = function(duration, action, nodesToHide, nodes
         }
     });
 };
+
+
+
+$.template.functors['money'] = function(template, call, parameters, options, inputMoney, fixedNumber, seperator,delimmter) {
+    var n = parseFloat(inputMoney),
+        c = isNaN(fixedNumber = Math.abs(fixedNumber)) ? 2 : fixedNumber,
+        d = seperator == undefined ? "." : seperator,
+        t = delimmter == undefined ? "," : delimmter,
+        s = (!isNaN(n) && n < 0) ? "-" : "",
+        i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "",
+        j = (j = i.length) > 3 ? j % 3 : 0;
+    if (isNaN(n)){
+        return "";
+    } else {
+        return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+    }
+};
+
+$.template.functors['srank'] = function(template, call, parameters, options, rating){
+    if (isNaN(rating)){
+        return "";
+    } else {
+        return "★★★★★☆☆☆☆☆".substring(5 - rating, 10 - rating);
+    }
+}
 
 $.template.external['lang'] = function(node, callback) {
 
