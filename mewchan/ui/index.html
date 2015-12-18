@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"/>
-        <title>Demo</title>
+        <title>1jia2</title>
 
         <link rel="stylesheet" href="/library/lab.style/foundation.css">
         <link rel="stylesheet" href="/library/lab.style/mobile.css">
@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="/library/lab.style/storyboard.css">
         <link rel="stylesheet" href="/library/lab.style/coolcto.css">
         <link rel="stylesheet" href="/style/layer.css">
-        <link rel="stylesheet" href="/style/demo.css">
+        <link rel="stylesheet" href="/style/1jia2.css">
 
         <script src="/library/lab.jquery/jquery-1.11.3.js"></script>
         <script src="/library/lab.query/resource.js"></script>
@@ -25,19 +25,19 @@
         <script type="text/javascript" src="./script/modular.js" ></script>
         <script type="text/javascript" src="./script/layer.m.js" ></script>
         <script type="text/javascript" src="./script/coolcto.js" ></script>
-        <script type="text/javascript" src="./script/demo.js" ></script>
+        <script type="text/javascript" src="./script/1jia2.js" ></script>
     </head>
 
     <body>
         <sb:storyboard id="header-navbar" class="storyboard"
             start-page-id="hideNav"
-            common-script-path="/demo/header/_common/script.js"
-            common-style-path="/demo/header/_common/style.css"
-            common-data-path="/demo/header/_common/data.json"
-            default-data-path="/demo/header/${page.id}/data.json"
-            default-template-path="/demo/header/${page.id}/index.xhtml"
-            default-script-path="/demo/header/${page.id}/script.js"
-            default-style-path="/demo/header/${page.id}/style.css"
+            common-script-path="/1jia2/header/_common/script.js"
+            common-style-path="/1jia2/header/_common/style.css"
+            common-data-path="/1jia2/header/_common/data.json"
+            default-data-path="/1jia2/header/${page.id}/data.json"
+            default-template-path="/1jia2/header/${page.id}/index.xhtml"
+            default-script-path="/1jia2/header/${page.id}/script.js"
+            default-style-path="/1jia2/header/${page.id}/style.css"
             >
 
             <sb:page id="hideNav" />
@@ -47,13 +47,13 @@
 
         <sb:storyboard id="footer-tabbar" class="storyboard"
             start-page-id="hideTab"
-            common-script-path="/demo/bottom/_common/script.js"
-            common-style-path="/demo/bottom/_common/style.css"
-            common-data-path="/demo/bottom/_common/data.json"
-            default-data-path="/demo/bottom/${page.id}/data.json"
-            default-template-path="/demo/bottom/${page.id}/index.xhtml"
-            default-script-path="/demo/bottom/${page.id}/script.js"
-            default-style-path="/demo/bottom/${page.id}/style.css"
+            common-script-path="/1jia2/bottom/_common/script.js"
+            common-style-path="/1jia2/bottom/_common/style.css"
+            common-data-path="/1jia2/bottom/_common/data.json"
+            default-data-path="/1jia2/bottom/${page.id}/data.json"
+            default-template-path="/1jia2/bottom/${page.id}/index.xhtml"
+            default-script-path="/1jia2/bottom/${page.id}/script.js"
+            default-style-path="/1jia2/bottom/${page.id}/style.css"
             >
 
             <sb:page id="hideTab" />
@@ -61,20 +61,26 @@
         </sb:storyboard>
 
         <sb:storyboard id="main-container" class="storyboard"
-            start-page-id="login-startPage"
+            start-page-id="login-registerpage1"
             start-channel="login"
-            common-script-path="/demo/content/_common/script.js"
-            common-style-path="/demo/content/_common/style.css"
-            common-data-path="/demo/content/_common/data.json"
-            default-data-path="/demo/content/${page.id}/data.json"
-            default-template-path="/demo/content/${page.id}/index.xhtml"
-            default-script-path="/demo/content/${page.id}/script.js"
-            default-style-path="/demo/content/${page.id}/style.css"
+            common-script-path="/1jia2/content/_common/script.js"
+            common-style-path="/1jia2/content/_common/style.css"
+            common-data-path="/1jia2/content/_common/data.json"
+            default-data-path="/1jia2/content/${page.id}/data.json"
+            default-template-path="/1jia2/content/${page.id}/index.xhtml"
+            default-script-path="/1jia2/content/${page.id}/script.js"
+            default-style-path="/1jia2/content/${page.id}/style.css"
             data-header="'login_backNav'"
             data-bottom="'hideTab'"
             data-needupdateheader="true"
             plugins="activity"
-            >
+            >  
+
+            <sb:page id="login-page-1jia2"
+                data-header="'hideNav'"
+                data-usage="'登录页面'"
+                data-navnormal="true"
+                />
 
             <sb:page id="login-startPage"
                 data-header="'hideNav'"
@@ -86,10 +92,24 @@
                 data-usage="'The login page'"
                 />
 
+            <sb:page id="login-login-page1"
+                data-header="'hideNav'"
+                data-contentButtonText="'登录'"
+                data-usage="'The login page'"
+                data-navnormal="true"
+                />    
+
             <sb:page id="login-registerPage"
                 data-contentButtonText="'注册'"
                 data-usage="'The register page'"
                 />
+
+            <sb:page id="login-registerpage1"
+                data-contentButtonText="'注册'"
+                data-usage="'The register page'"    
+                data-header="'hideNav'"
+                data-navnormal="true"
+                />    
 
             <sb:page id="login-resetPage"
                 data-contentButtonText="'重置密码'"

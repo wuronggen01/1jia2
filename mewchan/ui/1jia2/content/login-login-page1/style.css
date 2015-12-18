@@ -1,0 +1,108 @@
+.storyboard-page {
+    background: transparent url('/1jia2/content/login-login-page1/res/login-reset.jpg') ;
+    background-size: 100%;
+    height:100%;
+    width:100%;
+    font-family: "黑体"
+}
+
+#account {
+    margin-top: 5px;
+}
+
+#header {
+	width: 100%;
+	height: 44px;
+	margin-top: 10px;
+}
+
+.login-font {
+	font-size: 18px;
+	color: #ffffff;
+	text-align: center;
+}
+
+.item-content {
+	height: 44px;	
+	background-color: #f2f2f2;
+	border-radius: 4px;
+	margin: 10px 15px;
+	position: relative;
+	line-height: 44px;
+	font-size: 15px;
+}
+.item-title {
+	float: left;
+	margin-left: 17px;
+}
+
+.account-input{
+	border: none;
+	background-color:#f2f2f2; 
+	font-size: 15px;
+	position: absolute;
+	left: 80px;
+	line-height: 44px;
+	color: #999;
+	height: 44px;
+}
+
+#login-btn {
+	background-color: #4d4d4d;
+	color: #f2f2f2;
+	text-align: center;
+	margin-top: 20px;
+}
+
+#option-line {
+	color: #ffffff;
+	font-size: 12px;
+	margin-top: 20px;
+}
+
+#option-line #forgot-code {
+	float: left;
+	margin-left: 15px;
+}
+#option-line #register-account {
+	float: right;
+	margin-right: 15px;
+}
+
+#social-login {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	
+}
+#social-login:before {
+    content: "";
+    position: relative;
+    top: 7px;
+    height: 1px;
+    margin: 0 15px;
+    display: block;
+    background-color: #C8C7CC;
+}
+
+#social-login .social-title {
+    margin-bottom: 10px;
+    color: #999;
+    
+}
+#social-login .social-title .bg {
+	background-image: url('/1jia2/content/login-login-page1/res/bg.png');
+	width: 105px;
+	z-index: 1;
+	position: relative;
+    margin: 0 auto;
+}
+
+#social-login .web {
+	margin-bottom: 7px;
+}
+
+#social-login .social-line {
+	margin-bottom: 10px
+}

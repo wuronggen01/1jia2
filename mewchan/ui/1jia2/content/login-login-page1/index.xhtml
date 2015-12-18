@@ -1,0 +1,32 @@
+<div id="header">
+	<div class="left-icon"></div>
+	<div class="login-font">登录</div>
+</div>
+
+<div id="account">
+	<div class="item-content">
+		<div class="item-title">手机号</div>
+		<input class="account-input" type="tel" placeholder="请输入您的手机号码" />
+	</div>
+	<div class="item-content">
+		<div class="item-title">密码</div>
+		<input class="account-input " type="tel" placeholder="请输入您的手机密码" />	
+	</div>
+</div>
+
+<div id="login-btn" class="item-content">登录</div>
+
+<div id="option-line">
+	<div id="forgot-code" tmpl:on-click="switchToReset()" >忘记密码？</div>
+	<div id="register-account" tmpl:on-click="switchToRgister()">注册账号>></div>
+</div>
+
+<div id="social-login" >
+	<div class="social-title">
+		<div class="bg">社交账号登录</div>
+	</div>
+	<div class="social-line">
+		<img class="social-touch" src="${env('page.res')}wechat.png"  height="34px" width="37px" />
+	</div>
+	<div class="web">www.1jia2.com</div>
+</div>	
