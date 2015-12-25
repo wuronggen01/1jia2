@@ -1,0 +1,8 @@
+{
+	"carHeader" :[{
+		"id"         : 1,
+		"returnURL"     : "/1jia2/header/car-manage-index-header/res/return.png",
+		"headerTXT"  : "消息中心",
+		"headerEdit" : "清空"
+	}]
+}

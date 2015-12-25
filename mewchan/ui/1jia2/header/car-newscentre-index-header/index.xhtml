@@ -1,14 +1,14 @@
 <div class="block-20"></div>
-<div class="car-manage-header">
+<div class="car-newscentre-header">
 	<tmpl:map list="${carHeader}" id-getter="{item.id}">
 		<div class="header-left">
-			<img src="${item.returnURL}" width="22" height="14"/>
+			<img src="${item.returnURL}" width="21" height="21"/>
 		</div>
 		<div class="header-middle">
 			<p>${item.headerTXT}</p>
 		</div>
 		<div class="header-right">
-			<p>${item.headerEdit}</p>
+			<p tmpl:on-click="menuSwitch('car-information-index','car-information-index-header')">${item.headerEdit}</p>
 		</div>
 	</tmpl:map>
 </div>

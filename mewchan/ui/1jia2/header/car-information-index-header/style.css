@@ -10,29 +10,21 @@
     overflow: hidden;
 }
 
-.car-manage-header{
+.car-information-header{
 	background-color: #e6e6e6;
 	text-align:center;
 	height:100%;
-	position:relative;
+	position: relative;
 }
 
 .header-left{
-	position:absolute;
-	left:15px;
 	padding-top:10px;
-}
-
-.header-right{
-	position:absolute;
-	top: 0px;
-	right:15px;
-	font-size:15px;
-	padding-top:12px;
-	color:#ff7200;
+	position: absolute;
+	left:15px;
 }
 
 .header-middle{
 	font-size:16px;
 	padding-top:10px;
+	text-align:center;
 }
