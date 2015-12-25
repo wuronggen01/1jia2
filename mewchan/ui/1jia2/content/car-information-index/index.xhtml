@@ -1,0 +1,27 @@
+<div  id="car-information-list" >
+	<tmpl:map list="${information}" id-getter="{item.id}">
+		<div class="car-information">
+			<div class="car-information-left">
+				<p>${item.key}</p>
+			</div>
+			<div class="car-information-right">
+				<p style="display: inline-block;">${item.value}</p>
+				<img class="go" src="${item.goURL}" width="7px" height="13px" />
+			</div>
+			<br style="clear:both" />
+		</div>
+	</tmpl:map>
+	<div class="car-information">
+		<tmpl:map list="${carColor}" id-getter="{item.id}">
+			<div class="car-information-left">
+				<p>${item.key}</p>
+			</div>
+			<div class="car-information-right">
+				<span class="color" background-color="${colorVal}"></span>
+				<p style="display: inline-block;">${item.colorText}</p>
+				<img class="go" src="${item.goURL}" width="7px" height="13px" />
+			</div>
+		</tmpl:map>
+		<br style="clear:both" />
+	</div>
+</div>

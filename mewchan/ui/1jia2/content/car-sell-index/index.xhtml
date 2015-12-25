@@ -1,0 +1,17 @@
+<div class="wrapper">
+<div  id="car-rent-list" >
+	<tmpl:map list="${rentlist}" id-getter="{item.id}">
+		<div class="rent-item">
+			<div class="title" >
+				<p>${item.title}<span style="color:red;line-height: 0;"> *</span></p>
+			</div>
+			<div class="option">
+				<tmpl:map list="${item.option}" id-getter="{inItem.id}"  item-variant-name="inItem" >
+						<img src="${inItem.squareURL}" width="75" height="75" />
+				</tmpl:map>
+				<img src="${addURL}" width="75" height="75"/>
+			</div>
+		</div>
+	</tmpl:map>
+</div>
+</div>

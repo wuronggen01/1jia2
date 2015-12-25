@@ -1,0 +1,43 @@
+{
+	"header" : "car-information-index-header",
+	"bottom" : "car-information-index-Tab",
+	"information" : [{
+		"id"   : 1,
+		"key"  : "品牌车系",
+		"value": "奥迪A4L",
+		"goURL"		: "/1jia2/content/car-information-index/res/go.png"
+	},{
+		"id"   : 2,
+		"key"  : "车型",
+		"value": "30TFSI 1.8T 手动 舒适型",
+		"goURL"		: "/1jia2/content/car-information-index/res/go.png"
+	},{
+		"id"   : 3,
+		"key"  : "车牌号码",
+		"value": "SB74110",
+		"goURL"		: "/1jia2/content/car-information-index/res/go.png"
+	},{
+		"id"   : 4,
+		"key"  : "上牌时间",
+		"value": "2015年09月16日",
+		"goURL"		: "/1jia2/content/car-information-index/res/go.png"
+	},{
+		"id"   : 5,
+		"key"  : "所在城市",
+		"value": "上海",
+		"goURL"		: "/1jia2/content/car-information-index/res/go.png"
+	},{
+		"id"   : 6,
+		"key"  : "行驶里程",
+		"value": "10000km",
+		"goURL"		: "/1jia2/content/car-information-index/res/go.png"
+	}
+	],
+	"carColor" : [{
+		"id" : 1,
+		"colorVal"  : "black",
+		"key"       : "车辆颜色",
+		"colorText" : "黑色",
+		"goURL"		: "/1jia2/content/car-information-index/res/go.png"
+		}]
+}

@@ -1,0 +1,60 @@
+{
+	"header" : "car-sellBas-index-header",
+	"bottom" : "car-sellBas-index-Tab",
+	"carInformationTitle" : "车辆基本信息",
+	"carInformation" : [{
+		"id"   : 1,
+		"key"  : "车辆型号",
+		"value": "30TFSI 1.8T 手动 舒适型",
+		"goURL"		: "/1jia2/content/car-information-index/res/go.png"
+	},{
+		"id"   : 2,
+		"key"  : "车牌号",
+		"value": "SB74110",
+		"goURL"		: "/1jia2/content/car-information-index/res/go.png"
+	},{
+		"id"   : 3,
+		"key"  : "上牌时间",
+		"value": "2015年09月16日",
+		"goURL"		: "/1jia2/content/car-information-index/res/go.png"
+	},{
+		"id"   : 4,
+		"key"  : "所在城市",
+		"value": "上海",
+		"goURL"		: "/1jia2/content/car-information-index/res/go.png"
+	},{
+		"id"   : 5,
+		"key"  : "行驶里程",
+		"value": "10000km",
+		"goURL"		: "/1jia2/content/car-information-index/res/go.png"
+	},{
+		"id"   : 6,
+		"key"  : "车辆颜色",
+		"value": "黑色",
+		"goURL"		: "/1jia2/content/car-information-index/res/go.png"
+	},{
+		"id"   : 7,
+		"key"  : "预售价格",
+		"value": "18.6万元",
+		"goURL"		: "/1jia2/content/car-information-index/res/go.png"
+	}
+	],
+	"psInformationTitle" : "个人信息",
+	"psInformation": [{
+		"id"   : 1,
+		"key"  : "姓名",
+		"value": "郝车",
+		"goURL"		: "/1jia2/content/car-information-index/res/go.png"
+		},{
+		"id"   : 2,
+		"key"  : "性别",
+		"value": "男",
+		"goURL"		: "/1jia2/content/car-information-index/res/go.png"	
+			},{
+		"id"   : 3,
+		"key"  : "联系方式",
+		"value": "12345665423",
+		"goURL"		: "/1jia2/content/car-information-index/res/go.png"	
+				}]
+	
+}

@@ -1,0 +1,19 @@
+{
+	"newslist" :[{
+		"id"      : 1,
+		"logoURL" : "/1jia2/content/car-newscentre-index/res/activity.png",
+		"title"   : "活动消息",
+		"desc"    : "活动消息啊，这是一个活动消息，什么活动消息......",
+		"time"    : "2015-09-18 17:30",
+		"details"  : "点击查看详情"
+	},{
+		"id"      : 2,
+		"logoURL" : "/1jia2/content/car-newscentre-index/res/order.png",
+		"title"   : "订单消息",
+		"desc"    : "订单消息啊，这是一个订单消息，什么订单消息......",
+		"time"    : "2015-09-18 17:30",
+		"details"  : "点击查看详情"
+	}],
+	"header"      : "car-newscentre-index-header",
+	"bottom"      : "hideTab"
+}

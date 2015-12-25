@@ -1,0 +1,41 @@
+<div  id="car-manage-list" >
+	<tmpl:map list="${carlist}" id-getter="{item.id}">
+		<div class="car-item">
+			<div class="car-left">
+				<div class="logo-wrapper">
+					<img src="${item.logoURL}" width="50" height="50"  />
+				</div>
+			</div>
+			<div class="car-middle">
+				<div class="car-middle-top">
+					<p  class="title" >
+						${item.title}
+					</p>
+					<p class="desc">
+						${item.desc}
+					</p>
+				</div>	
+					<p class="car-middle-bottom">
+						${item.meta}
+					</p>
+			</div>
+			<div class="car-right" >
+				<span class="status">
+					${item.status}
+				</span>
+				<span class="go">
+					<img src="${item.goURL}" width="7px" height="13px"/>
+				</span>
+			</div>
+			<br style="clear:both;" />
+		</div>
+	</tmpl:map>
+</div>
+<div id="car-manage-add">
+	<div class="car-item car-add">
+		<tmpl:map list="${carAdd}" id-getter="{item.id}">
+			<img src="${item.addURL}" height="26" width="26"/>
+			<p>${item.addTXT}</p>
+		</tmpl:map>	
+	</div>
+</div>

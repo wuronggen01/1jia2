@@ -1,0 +1,26 @@
+<div  id="car-newscentre-list" >
+	<tmpl:map list="${newslist}" id-getter="{item.id}">
+		<div class="news-item">
+			<div class="news-left">
+					<img src="${item.logoURL}" width="16" height="16"  />
+			</div>
+			<div class="news-middle">
+				<p  class="title" >
+					${item.title}
+				</p>
+				<p>
+					${item.desc}
+				</p>
+				<p>
+					${item.time}
+				</p>
+			</div>
+			<div class="news-right" >
+				<span class="status">
+					${item.details}
+				</span>
+			</div>
+			<br style="clear:both;" />
+		</div>
+	</tmpl:map>
+</div>

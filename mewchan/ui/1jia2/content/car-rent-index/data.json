@@ -1,0 +1,35 @@
+{
+	"rentlist" :[{
+			"id"     :  1,
+			"title"  : "行驶证",
+			"option" : [{
+				"id" 	    :  1,
+				"num"		:  1,
+				"squareURL" : "/1jia2/content/car-rent-index/res/square.png"
+			},{
+				"id" 	    :  2,
+				"num"		:  1,
+				"squareURL" : "/1jia2/content/car-rent-index/res/square.png"
+			},{
+				"id" 	    :  3,
+				"num"		:  1,
+				"squareURL" : "/1jia2/content/car-rent-index/res/square.png"
+			},{
+				"id" 	    :  4,
+				"num"		:  1,
+				"squareURL" : "/1jia2/content/car-rent-index/res/square.png"
+			}]
+		},{
+			"id"     :  2,
+			"title"  : "交强险",
+			"option" : []
+		},{
+			"id"     :  3,
+			"title"  : "保单",
+			"option" : []
+		}],
+	"squareURL" : "/1jia2/content/car-rent-index/res/square.png",
+	"addURL"    : "/1jia2/content/car-rent-index/res/addpic.png",
+	"header"    : "car-rent-index-header",
+	"bottom"    : "car-rent-index-Tab"
+}

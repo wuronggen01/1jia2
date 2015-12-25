@@ -1,0 +1,48 @@
+<div class="wrapper">
+<!-- 上部分 车主自述 -->
+<div  id="car-information-list" >
+	<div class="car-information-title car-information">
+		<div class="car-information-left">
+			<p>${ownerDisTitle}</p><p style="color:red;">&nbsp;*</p>
+		</div>	
+	</div>
+	<div class="car-ownerDis">
+		<div class="car-ownerDis-addLabel">
+			<span style="color:#333333;">添加标签:</span>
+			<span style="color:#666666;">点击下方标签进行添加</span>
+			<img class="car-ownerDis-delete" src="${deleteURL}" width="21" height="21" /> 
+		</div>
+		<div class="car-ownerDis-Labels">
+			<tmpl:map list="${labels}" id-getter="{item.id}">
+				<p class="${item.checked}" >${item.option}</p>
+			</tmpl:map>
+			<br style="clear:both;" />
+		</div>
+		<div class="car-ownerDis-dis">
+			<textarea placeholder="简要描述一下车辆情况" ></textarea>
+			<p>100/200</p>
+		</div>
+	</div>
+</div>
+
+<!-- 下部分 更多信息 -->
+<div id="ps-information-list">
+		<div class="car-information-title car-information">
+			<div class="car-information-left">
+				<p>${moreInformationTitle}</p><p style="color:red;">&nbsp;*</p>
+			</div>	
+		</div>
+	<tmpl:map list="${moreInformation}" id-getter="{item.id}">
+		<div class="car-information">
+			<div class="car-information-left">
+				<p>${item.key}</p>
+			</div>
+			<div class="car-information-right">
+				<p style="display: inline-block;">${item.value}</p>
+				<img class="go" src="${item.goURL}" width="7px" height="13px" />
+			</div>
+			<br style="clear:both" />
+		</div>
+	</tmpl:map>	
+</div>
+</div>

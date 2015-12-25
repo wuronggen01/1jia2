@@ -1,6 +1,7 @@
 .storyboard {
-	display: none;
 	position: absolute;
 	bottom: 0px;
 	z-index: 1000;
+	height: 60px;
+    width: 100%;
 }

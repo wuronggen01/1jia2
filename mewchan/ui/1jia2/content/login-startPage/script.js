@@ -8,6 +8,9 @@ var didEnterForestage = function () {
 
 var siwtchToLogin = function () {
     this.storyboard.switchTo('login-loginPage');
+    // window.main-cantainer.switchTo('login-loginPage', null, {
+    //     "channel": "new"
+    // });
 };
 
 var siwtchToRegister = function () {
