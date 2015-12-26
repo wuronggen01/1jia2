@@ -4,22 +4,22 @@
 	<div class="car-information-title car-information">
 		<div class="car-information-left">
 			<p>${ownerDisTitle}</p><p style="color:red;">&nbsp;*</p>
-		</div>	
+		</div>
 	</div>
 	<div class="car-ownerDis">
-		<div class="car-ownerDis-addLabel">
+		<div class="car-ownerDis-addLabel" >
 			<span style="color:#333333;">添加标签:</span>
 			<span style="color:#666666;">点击下方标签进行添加</span>
-			<img class="car-ownerDis-delete" src="${deleteURL}" width="21" height="21" /> 
+			<img class="car-ownerDis-delete" src="${deleteURL}" width="21" height="21" tmpl:on-click="cleanUp()"  />
 		</div>
 		<div class="car-ownerDis-Labels">
 			<tmpl:map list="${labels}" id-getter="{item.id}">
-				<p class="${item.checked}" >${item.option}</p>
+				<p class="${item.checked}" tmpl:on-click="check()"  >${item.option}</p>
 			</tmpl:map>
 			<br style="clear:both;" />
 		</div>
 		<div class="car-ownerDis-dis">
-			<textarea placeholder="简要描述一下车辆情况" ></textarea>
+			<textarea placeholder="简要描述一下车辆情况" cols="47px" ></textarea>
 			<p>100/200</p>
 		</div>
 	</div>
@@ -30,7 +30,7 @@
 		<div class="car-information-title car-information">
 			<div class="car-information-left">
 				<p>${moreInformationTitle}</p><p style="color:red;">&nbsp;*</p>
-			</div>	
+			</div>
 		</div>
 	<tmpl:map list="${moreInformation}" id-getter="{item.id}">
 		<div class="car-information">
@@ -43,6 +43,6 @@
 			</div>
 			<br style="clear:both" />
 		</div>
-	</tmpl:map>	
+	</tmpl:map>
 </div>
 </div>

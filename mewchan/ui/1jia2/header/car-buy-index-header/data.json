@@ -1,0 +1,13 @@
+{
+	"carHeader" :[{
+		"id"         : 1,
+		"returnURL"  : "/1jia2/header/car-manage-index-header/res/return.png",
+		"headerTXT"  : "填写资料"
+	}],
+	"nav"       :[{
+		"id"         : 1,
+		"basic"      : "基本信息",
+	    "discript"   : "描述简介",
+	    "uploadpic"  : "上传照片"
+	}]
+}
