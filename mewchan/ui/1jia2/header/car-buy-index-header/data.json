@@ -1,13 +1,21 @@
 {
 	"carHeader" :[{
-		"id"         : 1,
-		"returnURL"  : "/1jia2/header/car-manage-index-header/res/return.png",
-		"headerTXT"  : "填写资料"
+		"id"           : 1,
+		"returnURL"    : "/1jia2/header/car-buy-index-header/res/return.png",
+		"headerTXT"    : "填写资料"
 	}],
 	"nav"       :[{
-		"id"         : 1,
-		"basic"      : "基本信息",
-	    "discript"   : "描述简介",
-	    "uploadpic"  : "上传照片"
-	}]
+		  "id"         : 1,
+		  "key"        : "排序"
+	},{
+		  "id"         : 2,
+	    "key"        : "价格"
+	},{
+		  "id"         : 3,
+	    "key"        : "品牌"
+	},{
+	  	"id"         : 4,
+			"key"        : "里程数"
+	}],
+	"downURL"   :   "/1jia2/header/car-buy-index-header/res/down.png"
 }

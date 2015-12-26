@@ -8,11 +8,10 @@
 			<p>${item.headerTXT}</p>
 		</div>
 	</tmpl:map>
-	<tmpl:map list="${nav}" id-getter="{item.id}">
-		<div class="header-nav">
-			<p>${item.basic}</p><i class="slip"></i>
-			<p>${item.discript}</p><i class="slip"></i>
-			<p style="color:#ff7200">${item.uploadpic}</p>
-		</div>
-	</tmpl:map>
+	<div class="header-nav">
+		<tmpl:map list="${nav}" id-getter="{item.id}">
+			<p tmpl:on-click="upDownS()">${item.key}<img src="${downURL}" width="11" height="6" /></p><i class="slip"></i>
+		</tmpl:map>
+	</div>
+	<div class="header-optionBox"></div>
 </div>

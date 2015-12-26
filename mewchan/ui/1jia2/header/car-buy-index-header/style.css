@@ -7,13 +7,13 @@
     width : 100%;
     height: 109px;
     border: 1px solid #cccccc;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .car-information-header{
 	background-color: #e6e6e6;
 	text-align:center;
-	height:100%;
+	height:89px;
 	position: relative;
 }
 
@@ -33,7 +33,7 @@
 
 .header-nav{
 	width:100%;
-	height:45px;
+	height:42px;
 	display:-webkit-box;
 	display:-moz-box;
 	color:#333333;
@@ -48,6 +48,20 @@
 	top:-3px;
 }
 
+/*down*/
+.header-nav p img{
+	margin-left: 6px;
+}
+
+/*up*/
+.header-nav p.up img{
+	transform:scaleY(-1);
+	-webkit-transform:scaleY(-1);
+	-moz-transform:scaleY(-1);
+	-o-transform:scaleY(-1);
+
+}
+
 .header-nav i.slip{
 	border-left:1px solid #ccc;
 	border-right:1px solid #fff;
@@ -55,4 +69,14 @@
 	height:25px;
 	position:relative;
 	top:-8px;
+}
+
+/*下拉选项框*/
+.header-optionBox{
+	display: none;
+	width: 100%;
+	height: 300px;
+	border:1px solid #e6e6e6;
+	background: #ffffff;
+	position:fixed;
 }
