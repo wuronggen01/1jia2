@@ -62,6 +62,10 @@
 
 }
 
+.header-nav p.up .header-optionBox{
+	border-top:1px solid #cccccc;
+}
+
 .header-nav i.slip{
 	border-left:1px solid #ccc;
 	border-right:1px solid #fff;
@@ -73,10 +77,12 @@
 
 /*下拉选项框*/
 .header-optionBox{
-	display: none;
 	width: 100%;
-	height: 300px;
-	border:1px solid #e6e6e6;
+	height: 0px;
+	border-bottom:1px solid #cccccc;
+	/*border-top:1px solid #cccccc;*/
 	background: #ffffff;
 	position:fixed;
+	top:108px;
+	left:0px;
 }

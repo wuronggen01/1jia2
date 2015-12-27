@@ -10,8 +10,7 @@
 	</tmpl:map>
 	<div class="header-nav">
 		<tmpl:map list="${nav}" id-getter="{item.id}">
-			<p tmpl:on-click="upDownS()">${item.key}<img src="${downURL}" width="11" height="6" /></p><i class="slip"></i>
+			<p tmpl:on-click="upDownS()">${item.key}<img src="${downURL}" width="11" height="6" /><div class="header-optionBox"></div></p><i class="slip"></i>
 		</tmpl:map>
 	</div>
-	<div class="header-optionBox"></div>
 </div>
