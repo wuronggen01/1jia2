@@ -31,7 +31,7 @@
 	border-bottom:1px solid #ccc;
 }
 
-.header-nav{
+.header-nav-box{
 	width:100%;
 	height:42px;
 	display:-webkit-box;
@@ -41,7 +41,13 @@
 	border-top:1px solid #fff;
 }
 
-.header-nav p{
+.header-filterK-wrapper{
+	width:auto;
+	heigth:auto;
+	background:#fff;
+}
+
+.header-nav-box .header-nav{
 	-webkit-box-flex:1;
 	-moz-box-flex:1;
 	position: relative;
@@ -49,12 +55,12 @@
 }
 
 /*down*/
-.header-nav p img{
+.header-nav-box .header-nav img{
 	margin-left: 6px;
 }
 
 /*up*/
-.header-nav p.up img{
+.header-nav-box p.up img{
 	transform:scaleY(-1);
 	-webkit-transform:scaleY(-1);
 	-moz-transform:scaleY(-1);
@@ -62,11 +68,11 @@
 
 }
 
-.header-nav p.up .header-optionBox{
+.header-nav-box p.up .header-optionBox{
 	border-top:1px solid #cccccc;
 }
 
-.header-nav i.slip{
+.header-nav-box i.slip{
 	border-left:1px solid #ccc;
 	border-right:1px solid #fff;
 	display:inline-block;
@@ -76,13 +82,44 @@
 }
 
 /*下拉选项框*/
+
+
 .header-optionBox{
 	width: 100%;
 	height: 0px;
 	border-bottom:1px solid #cccccc;
-	/*border-top:1px solid #cccccc;*/
 	background: #ffffff;
 	position:fixed;
 	top:108px;
 	left:0px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	background: rgba(0,0,0,0.5);
+}
+
+
+
+/*只显示第一个 header-optionBox 用作调试*/
+/*.header-nav-box p:nth-child(1) div{*/
+	/*height: auto;*/
+/*}*/
+
+.header-optionBox p.header-filterK{
+	width: 100%;
+	height: 44px;
+	font-size: 12px;
+	padding-top: 14px;
+	border-bottom:1px solid #e6e6e6;
+	text-align: left;
+	margin-left: 15px;
+	background:#fff;
+}
+
+ /*去掉最下面一行的border*/
+/*.header-optionBox p:last-child{
+	border-bottom:none;
+}*/
+
+.header-optionBox p.checked{
+	color:#ff7200;
 }

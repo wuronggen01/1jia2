@@ -8,9 +8,18 @@
 			<p>${item.headerTXT}</p>
 		</div>
 	</tmpl:map>
-	<div class="header-nav">
+	<div class="header-nav-box">
 		<tmpl:map list="${nav}" id-getter="{item.id}">
-			<p tmpl:on-click="upDownS()">${item.key}<img src="${downURL}" width="11" height="6" /><div class="header-optionBox"></div></p><i class="slip"></i>
+			<p class="header-nav" tmpl:on-click="upDownS()" order="${item.id}">${item.key}
+				<img src="${downURL}" width="11" height="6" />
+				<div class="header-optionBox">
+          <tmpl:map list="${item.filterKw}" id-getter="{inItem.id}" item-variant-name="inItem">
+						<div class="header-filterK-wrapper">
+					  <p class="header-filterK" tmpl:on-click="checkFil()">${inItem.kw}</p>
+						</div>
+				  </tmpl:map>
+				</div>
+			</p><i class="slip"></i>
 		</tmpl:map>
 	</div>
 </div>
