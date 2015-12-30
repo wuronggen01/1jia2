@@ -85,13 +85,13 @@
 
 
 .header-optionBox{
-	width: 100%;
+	width: 101%;
 	height: 0px;
 	border-bottom:1px solid #cccccc;
 	background: #ffffff;
 	position:fixed;
 	top:108px;
-	left:0px;
+	left:-1px;
 	overflow-y: auto;
 	overflow-x: hidden;
 	background: rgba(0,0,0,0.5);

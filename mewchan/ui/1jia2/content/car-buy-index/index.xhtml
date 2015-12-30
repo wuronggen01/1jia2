@@ -2,6 +2,9 @@
 	<div class="car-buy-list">
 		<tmpl:map list="${carList}" id-getter="{item.id}">
 			<div class="car-buy-top">
+				<div class="car-showPics">
+					<img src="${item.picURL}" style="width:100%" />
+				</div>
 			</div>
 			<div class="car-buy-bottom">
 				<div class="car-buy-bottomLef">

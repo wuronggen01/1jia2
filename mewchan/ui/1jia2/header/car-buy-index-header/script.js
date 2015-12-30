@@ -6,22 +6,7 @@ function goBack(page){
 
 var upDownS = function(){
 	var order = $(this.element).attr("order");
-	var hg = parseInt($(window).height()) - 108;
-	// switch (order)
-	// {
-	// 	case "1":
-	// 	  hg = 221;
-	// 	  break;
-	// 	case "2":
-	// 		hg = 352;
-	// 		break;
-	// 	case "3":
-	// 		hg = parseInt($(window.height)) - 108;
-	// 		break;
-	// 	case "4":
-	// 		hg = 221;
-	// 		break;
-	// }
+	var hg = parseInt($(window).height()) - 107;
 
 	//遍历是否有动画
 	var animated = false;

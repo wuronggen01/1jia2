@@ -6,8 +6,8 @@
 		"price"    :  "19.5万",
 		"brand"    :  "别克",
 		"series"   :  "君威",
-		"style"    :  "2012款 2.0L 自动舒适版"
-
+		"style"    :  "2012款 2.0L 自动舒适版",
+		"picURL"   :  "/1jia2/content/car-buy-index/res/car.gif"
 		},{
 		"id"       :  2,
 		"mileage"  :  "2.5万公里",
@@ -15,7 +15,8 @@
 		"price"    :  "19.5万",
 		"brand"    :  "别克",
 		"series"   :  "君威",
-		"style"    :  "2012款 2.0L 自动舒适版"
+		"style"    :  "2012款 2.0L 自动舒适版",
+		"picURL"   :  "/1jia2/content/car-buy-index/res/car.gif"
 			}],
 	"goURL"     : "/1jia2/content/car-buy-index/res/go.png",
 	"header"    : "car-buy-index-header",
