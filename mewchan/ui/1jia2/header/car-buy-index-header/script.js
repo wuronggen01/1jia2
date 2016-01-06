@@ -38,7 +38,7 @@ var upDownS = function(){
 
 	$(".header-nav-box p.header-nav").find(".header-optionBox").each(function(){
 		if(parseInt($(this).css("height") ) > 0){
-			$(this).animate({ height : "0px"},200)
+			$(this).animate({ height : "0px"},200);
 		}
 	});
 	console.log(hg);
@@ -54,12 +54,13 @@ var checkFil = function(){
 	//去除事件冒泡
 	(function(event){
 		 e = event || window.event;
-		 if(e.stopPropagation){
+		 if(e && e.stopPropagation){
 			 e.stopPropagation();
 		  }else{
 				e.cancelBubble = true;
+				return flase;
 			}
-		})();
+		})(event);
 
 	/*点击选中*/
 	//先遍历去除
