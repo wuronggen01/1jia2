@@ -1,0 +1,53 @@
+*{
+	font-family:"华文细黑";
+}
+
+.storyboard-page{
+	height:100%;
+	overflow: auto;
+}
+
+.wrapper{
+	height:650px;
+	background:#f8f8f8;
+}
+
+#car-rent-list{
+	width: 100%;
+	height:auto;
+	overflow: auto;
+	padding-top:45px;
+	background:#f8f8f8;
+}
+
+.rent-item{
+	width:100%;
+	height:auto;
+	overflow: hidden;
+	padding:15px 0 5px 15px;
+	border-bottom: 1px solid #e6e6e6;
+	border-top: 1px solid #e6e6e6;
+	position:relative;
+	margin-bottom:10px;
+	background:#fff;
+}
+
+.rent-item .title{
+	border-bottom:1px solid #e6e6e6;
+	padding-bottom: 14px;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.rent-item .option{
+	margin-top:15px;
+	height: auto;
+}
+
+.rent-item .option img{
+	display: inline-block;
+	width:75px;
+	height:75px;
+	padding:0 10px 10px 0;
+	float:left;
+}

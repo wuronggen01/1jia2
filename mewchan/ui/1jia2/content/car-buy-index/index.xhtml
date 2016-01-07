@@ -1,0 +1,22 @@
+<div class="wrapper">
+	<div class="car-buy-list">
+		<tmpl:map list="${carList}" id-getter="{item.id}">
+			<div class="car-buy-top">
+				<div class="car-showPics">
+					<img src="${item.picURL}" style="width:100%" />
+				</div>
+			</div>
+			<div class="car-buy-bottom">
+				<div class="car-buy-bottomLef">
+					<p>${item.brand}-${item.series}</p>
+				</div>
+				<div class="car-buy-bottomMid">
+					<p>${item.style}</p>
+				</div>
+				<div class="car-buy-bottomRig">
+					<img class="go" src="${goURL}" width="7px" height="13px" />
+				</div>
+			</div>
+	  </tmpl:map>
+	</div>
+</div>

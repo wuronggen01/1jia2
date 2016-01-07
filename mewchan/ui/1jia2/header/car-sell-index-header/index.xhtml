@@ -1,0 +1,18 @@
+<div class="block-20"></div>
+<div class="car-information-header">
+	<tmpl:map list="${carHeader}" id-getter="{item.id}">
+		<div tmpl:on-click="goBack('car-manage-index')" class="header-left">
+			<img  src="${item.returnURL}" width="21" height="21"/>
+		</div>
+		<div class="header-middle">
+			<p>${item.headerTXT}</p>
+		</div>
+	</tmpl:map>
+	<tmpl:map list="${nav}" id-getter="{item.id}">
+		<div class="header-nav">
+			<p>${item.basic}</p><i class="slip"></i>
+			<p>${item.discript}</p><i class="slip"></i>
+			<p style="color:#ff7200">${item.uploadpic}</p>
+		</div>
+	</tmpl:map>
+</div>

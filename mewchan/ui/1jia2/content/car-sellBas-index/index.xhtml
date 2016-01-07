@@ -1,0 +1,74 @@
+<div class="wrapper">
+<div  id="car-information-list" >
+		<div class="car-information-title car-information">
+			<div class="car-information-left">
+				<p>${carInformationTitle}</p><p style="color:red;">&nbsp;*</p>
+			</div>	
+		</div>
+		<i class="hr-lg"></i>
+	<tmpl:map list="${carInformation}" id-getter="{item.id}">
+	
+	<tmpl:switch condition="item.id" >
+
+    <tmpl:case value="6" >
+        <!-- 如果数据模型中id为5的话，则执行这段-->
+		<div class="car-information">
+			<div class="car-information-left">
+				<p>${item.key}</p>
+			</div>
+			<div class="car-information-right">
+				<span class="color"></span>
+				<p style="display: inline-block;">${item.value}</p>
+				<img class="go" src="${item.goURL}" width="7px" height="13px" />
+			</div>
+		<br style="clear:both" />
+		</div>
+		<tmpl:if test="7 != item.id">
+			<i class="hr-st"></i>
+		</tmpl:if>
+    </tmpl:case>
+
+    <tmpl:case >
+        <!-- 如果数据模型中list.length不为0的话，则执行这段-->
+		<div class="car-information">
+			<div class="car-information-left">
+				<p>${item.key}</p>
+			</div>
+			<div class="car-information-right">
+				<p style="display: inline-block;">${item.value}</p>
+				<img class="go" src="${item.goURL}" width="7px" height="13px" />
+			</div>
+			<br style="clear:both" />
+		</div>
+		<tmpl:if test="item.id != carInformation.length">
+			<i class="hr-st"></i>
+		</tmpl:if>
+    </tmpl:case>
+	</tmpl:switch>
+	</tmpl:map>
+	
+</div>
+<div id="ps-information-list">
+		<div class="car-information-title car-information">
+			<div class="car-information-left">
+				<p>${psInformationTitle}</p><p style="color:red;">&nbsp;*</p>
+			</div>	
+		</div>
+		<i class="hr-lg"></i>
+	<tmpl:map list="${psInformation}" id-getter="{item.id}">
+		<div class="car-information">
+			<div class="car-information-left">
+				<p>${item.key}</p>
+			</div>
+			<div class="car-information-right">
+				<p style="display: inline-block;">${item.value}</p>
+				<img class="go" src="${item.goURL}" width="7px" height="13px" />
+			</div>
+			<br style="clear:both" />
+		</div>
+		<tmpl:if test="psInformation.length != item.id">
+			<i class="hr-st"></i>
+		</tmpl:if>
+	</tmpl:map>	
+</div>
+</div>

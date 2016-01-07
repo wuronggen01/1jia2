@@ -19,7 +19,7 @@
 
     "playgrounds": {
         "http": {
-            
+            "port" : "65442"
         }
     },
 

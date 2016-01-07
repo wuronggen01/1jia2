@@ -1,0 +1,70 @@
+{
+	"header"		: "car-sellDis-index-header",
+	"bottom" 		: "car-sellDis-index-Tab",
+	"ownerDisTitle" : "车主自述",
+	"deleteURL"		: "/1jia2/content/car-rentDis-index/res/delete.png",
+	"labels"		 : [{
+			"id"     :  1,
+			"option" :	"九成新",
+			"checked":  ""
+		},{
+			"id"     :  2,
+			"option" :	"四字标签",
+			"checked":  ""
+		},{
+			"id"     :  3,
+			"option" :	"两字",
+			"checked":  ""
+		},{
+			"id"     :  4,
+			"option" :	"我是五个字",
+			"checked":  "checked"
+		},{
+			"id"     :  5,
+			"option" :	"九成新",
+			"checked":  ""
+		},{
+			"id"     :  6,
+			"option" :	"四字标签",
+			"checked":  "checked"
+		},{
+			"id"     :  7,
+			"option" :	"我是五个字",
+			"checked":  ""
+		}],
+
+
+	"moreInformationTitle" : "更多信息",
+	"moreInformation": [{
+		"id"   : 1,
+		"key"  : "是否同时可租",
+		"value": "否",
+		"goURL"		: "/1jia2/content/car-rentDis-index/res/go.png"
+		},{
+		"id"   : 2,
+		"key"  : "是否包含过户费",
+		"value": "否",
+		"goURL"		: "/1jia2/content/car-rentDis-index/res/go.png"	
+			},{
+		"id"   : 3,
+		"key"  : "保险到期时间",
+		"value": "2015-12-25",
+		"goURL"		: "/1jia2/content/car-rentDis-index/res/go.png"	
+			},{
+		"id"   : 4,
+		"key"  : "年检到期时间",
+		"value": "2015-12-25",
+		"goURL"		: "/1jia2/content/car-rentDis-index/res/go.png"	
+			},{
+		"id"   : 5,
+		"key"  : "车辆用途",
+		"value": "私人",
+		"goURL"		: "/1jia2/content/car-rentDis-index/res/go.png"		
+			},{
+		"id"   : 6,
+		"key"  : "定期保养",
+		"value": "-",
+		"goURL"		: "/1jia2/content/car-rentDis-index/res/go.png"		
+				}]
+	
+}

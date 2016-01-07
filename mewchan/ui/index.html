@@ -31,6 +31,7 @@
     <body>
         <sb:storyboard id="header-navbar" class="storyboard"
             start-page-id="hideNav"
+            supports-virtual-page="yes"
             common-script-path="/1jia2/header/_common/script.js"
             common-style-path="/1jia2/header/_common/style.css"
             common-data-path="/1jia2/header/_common/data.json"
@@ -47,6 +48,7 @@
 
         <sb:storyboard id="footer-tabbar" class="storyboard"
             start-page-id="hideTab"
+            supports-virtual-page="yes"
             common-script-path="/1jia2/bottom/_common/script.js"
             common-style-path="/1jia2/bottom/_common/style.css"
             common-data-path="/1jia2/bottom/_common/data.json"
@@ -61,8 +63,9 @@
         </sb:storyboard>
 
         <sb:storyboard id="main-container" class="storyboard"
-            start-page-id="login-registerpage1"
+            start-page-id="car-buy-index"
             start-channel="login"
+            supports-virtual-page="yes"
             common-script-path="/1jia2/content/_common/script.js"
             common-style-path="/1jia2/content/_common/style.css"
             common-data-path="/1jia2/content/_common/data.json"
@@ -120,6 +123,12 @@
                 data-contentButtonText="'使用条款'"
                 data-usage="'The clause page'"
                 />
+
+            <!-- <sb:page id="car-manage-index"
+                data-header="'car-manage-index-header'"
+                data-usage="'车辆管理'"
+                data-bottom="'hideTab'"
+                /> -->
 
         </sb:storyboard>
 

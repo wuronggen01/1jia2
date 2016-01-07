@@ -1,0 +1,26 @@
+{
+	"carlist" :[{
+		"id"      : 1,
+		"logoURL" : "/1jia2/content/car-manage-index/res/audi.png",
+		"title"   : "进口奥迪A1",
+		"desc"    : "2014款乱跑",
+		"meta"    : "100000KM",
+		"status"  : "待售",
+		"goURL"   : "/1jia2/content/car-manage-index/res/go.png"
+	},{
+		"id"      : 2,
+		"logoURL" : "/1jia2/content/car-manage-index/res/ford.png",
+		"title"   : "进口奥迪A1",
+		"desc"    : "2014款乱跑",
+		"meta"    : "100000KM",
+		"status"  : "待售",
+		"goURL"   : "/1jia2/content/car-manage-index/res/go.png"
+	}],
+	"header"      : "car-manage-index-header",
+	"bottom"      : "hideTab",
+	"carAdd"  : [{
+		"id"      : 1,
+		"addURL"  : "/1jia2/content/car-manage-index/res/car-add.png",
+		"addTXT"  : "添加您的车辆"
+	}]
+}

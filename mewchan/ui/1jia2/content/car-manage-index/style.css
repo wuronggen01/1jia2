@@ -1,0 +1,97 @@
+*{
+	font-family:"华文细黑";
+}
+
+.storyboard-page{
+	height:100%;
+	background:#f8f8f8;
+}
+
+#car-manage-list{
+	width: 100%;
+	background:#ffffff;
+	overflow: auto;
+}
+
+.car-item{
+	height: 80px;
+	width: 100%;
+	padding-top:15px;
+	padding-bottom: 15px;
+	overflow: hidden;
+	border-bottom: 1px solid #e6e6e6;
+}
+
+.car-left{
+	float: left;
+	width:80px;
+}
+
+.logo-wrapper{
+	width:50px;
+	height: 50px;
+	float: right;
+	margin-right: 15px;
+}
+.car-middle p.title {
+	font-size: 15px;
+	line-height: 15px;
+	margin-bottom: 7px;
+	color:#262626;
+}
+.car-middle p {
+	font-size: 12px;
+	color:#999999;
+}
+
+.car-middle{
+	float: left;
+	width:150px;
+}
+
+.car-middle-top{
+	padding-bottom:8px;
+	line-height: 9px;
+}
+
+.car-right{
+	float: right;
+	height:50px;
+	width:63px;
+	padding-top:17.5px;
+	padding-bottom:17px;
+	font-size:12px;
+	position:relative;
+}
+
+.car-right span{
+	margin-top:2px;
+	font-size:12px;
+	color:#ff7200;
+	line-height: 12px;
+}
+
+.car-right span.go{
+	position:absolute;
+	left:39px;
+	top:18px;
+}
+
+.car-add{
+	position:relative;
+	background:#ffffff;
+}
+
+.car-add img{
+	position:absolute;
+	top:27px;
+	left:28px;
+}
+
+.car-add p{
+	position:absolute;
+	left:77px;
+	top:30px;
+	font-size:15px;
+	color:#262626;
+}
