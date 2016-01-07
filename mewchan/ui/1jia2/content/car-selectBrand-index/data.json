@@ -1,0 +1,89 @@
+{
+	"brandList" :[{
+		"id"           : 1,
+		"anchor"       : "1A",
+		"order"        : "A",
+		"brands":[{
+			"id"           : 1,
+			"brandName"    : "奥迪",
+			"logoURL"      :"/1jia2/content/car-selectBrand-index/res/logo1.png"
+			}]
+		},{
+		"id"           : 2,
+		"anchor"       : "2B",
+		"order"        : "B",
+		"brands":[{
+			"id"           : 1,
+			"brandName"    : "别克",
+			"logoURL"      :"/1jia2/content/car-selectBrand-index/res/logo1.png"
+			},{
+			"id"           : 2,
+			"brandName"    : "宝马",
+			"logoURL"      :"/1jia2/content/car-selectBrand-index/res/logo1.png"
+			},{
+			"id"           : 3,
+			"brandName"    : "宝马",
+			"logoURL"      :"/1jia2/content/car-selectBrand-index/res/logo1.png"
+			},{
+			"id"           : 4,
+			"brandName"    : "宝马",
+			"logoURL"      :"/1jia2/content/car-selectBrand-index/res/logo1.png"
+			},{
+			"id"           : 5,
+			"brandName"    : "宝马",
+			"logoURL"      :"/1jia2/content/car-selectBrand-index/res/logo1.png"
+			},{
+			"id"           : 6,
+			"brandName"    : "宝马",
+			"logoURL"      :"/1jia2/content/car-selectBrand-index/res/logo1.png"
+			},{
+			"id"           : 7,
+			"brandName"    : "宝马",
+			"logoURL"      :"/1jia2/content/car-selectBrand-index/res/logo1.png"
+			},{
+			"id"           : 8,
+			"brandName"    : "宝马",
+			"logoURL"      :"/1jia2/content/car-selectBrand-index/res/logo1.png"
+				}]
+		},{
+		"id"           : 3,
+		"anchor"       : "3C",
+		"order"        : "C",
+		"brands":[{
+			"id"           : 1,
+			"brandName"    : "别克",
+			"logoURL"      :"/1jia2/content/car-selectBrand-index/res/logo1.png"
+			},{
+			"id"           : 2,
+			"brandName"    : "宝马",
+			"logoURL"      :"/1jia2/content/car-selectBrand-index/res/logo1.png"
+			},{
+			"id"           : 3,
+			"brandName"    : "宝马",
+			"logoURL"      :"/1jia2/content/car-selectBrand-index/res/logo1.png"
+			},{
+			"id"           : 4,
+			"brandName"    : "宝马",
+			"logoURL"      :"/1jia2/content/car-selectBrand-index/res/logo1.png"
+			},{
+			"id"           : 5,
+			"brandName"    : "宝马",
+			"logoURL"      :"/1jia2/content/car-selectBrand-index/res/logo1.png"
+			},{
+			"id"           : 6,
+			"brandName"    : "宝马",
+			"logoURL"      :"/1jia2/content/car-selectBrand-index/res/logo1.png"
+			},{
+			"id"           : 7,
+			"brandName"    : "宝马",
+			"logoURL"      :"/1jia2/content/car-selectBrand-index/res/logo1.png"
+			},{
+			"id"           : 8,
+			"brandName"    : "宝马",
+			"logoURL"      :"/1jia2/content/car-selectBrand-index/res/logo1.png"
+				}]
+		}],
+	"goURL"     : "/1jia2/content/car-buy-index/res/go.png",
+	"header"    : "car-selectBrand-index-header",
+	"bottom"    : "hideTab"
+}

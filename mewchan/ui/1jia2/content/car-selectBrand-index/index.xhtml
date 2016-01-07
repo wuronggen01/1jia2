@@ -1,0 +1,41 @@
+<div class="wrapper">
+	<div class="selectBrand-box">
+		<tmpl:map list="${brandList}" id-getter="{item.id}">
+		    <div class="anchor-wrapper">
+		        <a class="anchor" name="${item.anchor}">${item.order}</a>
+		    </div>
+		    <tmpl:map list="${item.brands}" id-getter="{inItem.id}" item-variant-name="inItem">
+		        <div class="brands-wrapper">
+                    <div class="brand-logo-wrapper">
+                        <img class="brand-logo" src="${inItem.logoURL}" width="36" height="36"/>
+                    </div>
+	                <p class="brand-name" tmpl:on-click="checkFil()">${inItem.brandName}</p>
+	            </div>
+		    </tmpl:map>
+		</tmpl:map>
+		<div class="check-anchor">
+	        <a href="#1A">A</a> 
+	        <a href="#2B">B</a>
+	        <a href="#3C">C</a>
+	        <a href="">D</a>
+	        <a href="">F</a>
+	        <a href="">G</a>
+	        <a href="#1A">H</a>
+	        <a href="#1A">J</a>
+	        <a href="#1A">K</a>
+	        <a href="#1A">L</a>
+	        <a href="#1A">M</a>
+	        <a href="#1A">N</a>
+	        <a href="#1A">O</a>
+	        <a href="#1A">P</a>
+	        <a href="#1A">Q</a>
+	        <a href="#1A">R</a>
+	        <a href="#1A">S</a>
+	        <a href="#1A">T</a>
+	        <a href="#1A">W</a>
+	        <a href="#1A">X</a>
+	        <a href="#1A">Y</a>
+	        <a href="#1A">Z</a>   
+	    </div>
+	</div>
+</div>

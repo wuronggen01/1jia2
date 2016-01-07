@@ -1,0 +1,74 @@
+*{
+	font-family:"华文细黑";
+}
+
+.storyboard-page{
+	height:100%;
+	overflow: auto;
+}
+
+.wrapper{
+	height: 100%;
+	background:#f8f8f8;
+	position: fixed;
+	top: 67px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	width: 100%;
+}
+
+.selectBrand-box{
+	width: 100%;
+	height: auto;
+	overflow-x: hidden;
+	overflow-y: auto;
+	background: #fff;
+}
+
+/*锚点样式 -begin-*/
+.anchor-wrapper{
+	height: 15px;
+	width: 100%;
+	background: #f2f2f2;
+	padding-left: 15px;
+	padding-top: 1px;
+}
+
+.check-anchor{
+	width: 12px;
+	height: auto;
+	position: fixed;
+	right: 10px;
+	top: 178px;
+	text-align: center;
+	font-size: 12px;
+}
+
+.check-anchor a{
+	display: block;
+}
+/*锚点样式 -end-*/
+
+/*品牌样式 -begin-*/
+.brands-wrapper{
+    width: 100%;
+    height: 49px;
+    border-bottom: 1px solid #e5e5e5;
+    margin-left: 15px;
+    background: #fff;
+}
+
+.brand-logo-wrapper{
+	width: 51px;
+	height: 100%;
+	float: left;
+    padding-top: 5px;
+}
+
+.brand-name{
+	font-size: 14px;
+	float: left;
+	padding-top: 14px;
+	color: #333;
+}
+/*品牌样式 -end-*/

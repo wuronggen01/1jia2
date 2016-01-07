@@ -26,14 +26,11 @@ var upDownS = function(){
 			}
 		});
 		$(this.element).parent().removeClass("up");
-	    $(".check-anchor").css("display","none");
 		return;
 	}
 
 	//如果点击非打开的按钮
-	//先none掉check-anchor
-	$(".check-anchor").css("display","none");
-	// 关闭
+	// 先关闭
 	$(".header-nav-box p.header-nav").each(function(){
 		if($(this).hasClass("up")){
 			$(this).removeClass("up");
@@ -45,13 +42,11 @@ var upDownS = function(){
 			$(this).animate({ height : "0px"},200);
 		}
 	});
-
+	console.log(hg);
 	$(this.element).parent().find(".header-optionBox").animate({
 		height : hg
 	},200);
-    if(order == 3){
-    	setTimeout("$('.check-anchor').css('display','block')",300);
-    }
+
 
 	$(this.element).parent().addClass("up");
 }

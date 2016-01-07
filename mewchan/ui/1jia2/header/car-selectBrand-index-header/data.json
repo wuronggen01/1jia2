@@ -1,0 +1,7 @@
+{
+	"carHeader" :[{
+		"id"           : 1,
+		"returnURL"    : "/1jia2/header/car-buy-index-header/res/return.png",
+		"headerTXT"    : "选择品牌"
+	}]
+}
