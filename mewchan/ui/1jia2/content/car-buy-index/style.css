@@ -8,7 +8,7 @@
 }
 
 .wrapper{
-	height:120%;
+	height: auto;
 	background:#f8f8f8;
 }
 
@@ -21,15 +21,12 @@
 	background:#f8f8f8;
 }
 
-.car-buy-top{
-  width:100%;
-}
-
 .car-show-box{
-	height: 210px;
+	height: auto;
 	width: 100%;
 	overflow: hidden;
 	position: relative;
+	background: #fff;
 }
 
 .car-showTXT-wrapper i.slip{
@@ -77,9 +74,8 @@
 .car-show-box .buttons{
 	width: 100%;
 	height: auto;
-	position: relative;
-	bottom: 25px;
-	
+	position: absolute;
+	bottom: 6px;
 	text-align: center;
 }
 
@@ -102,7 +98,7 @@
 
 .car-buy-bottom{
 	width: 100%;
-	height: 44px;
+	height: 40px;
 	background: #fff;
 }
 
@@ -110,7 +106,7 @@
 	float: left;
 	font-size: 17px;
 	height: 100%;
-	padding-top: 9px;
+	padding-top: 7px;
 	padding-left: 13px;
 }
 
@@ -118,7 +114,7 @@
 	float: left;
 	font-size: 14px;
 	height: 100%;
-	padding-top: 12px;
+	padding-top: 10px;
 	padding-left: 13px;
 	color: #666;
 }
