@@ -1,4 +1,4 @@
-function goBack(page){
+var goBack = function(page){
 	window.content.switchTo(page, null, {
         "action": "backward"
     });
@@ -19,17 +19,18 @@ var upDownS = function(){
 	if(animated){return;}
 
 	// 如果点击了打开的按钮
-	if($(this.element).hasClass("up")){
+	if($(this.element).parent().hasClass("up")){
 		$(".header-nav-box p.header-nav").find(".header-optionBox").each(function(){
 			if(parseInt($(this).css("height") ) > 0){
 				$(this).animate({ height : "0px"},200)
 			}
 		});
-		$(this.element).removeClass("up");
+		$(this.element).parent().removeClass("up");
 		return;
 	}
 
 	//如果点击非打开的按钮
+	// 先关闭
 	$(".header-nav-box p.header-nav").each(function(){
 		if($(this).hasClass("up")){
 			$(this).removeClass("up");
@@ -42,12 +43,12 @@ var upDownS = function(){
 		}
 	});
 	console.log(hg);
-	$(this.element).find(".header-optionBox").animate({
+	$(this.element).parent().find(".header-optionBox").animate({
 		height : hg
 	},200);
 
 
-	$(this.element).addClass("up");
+	$(this.element).parent().addClass("up");
 }
 
 var checkFil = function(){
@@ -60,7 +61,7 @@ var checkFil = function(){
 				e.cancelBubble = true;
 				return flase;
 			}
-		})(event);
+		})();
 
 	/*点击选中*/
 	//先遍历去除
@@ -73,9 +74,14 @@ var checkFil = function(){
 	$(this.element).addClass("checked");
 }
 
+var scrollAnchor= function(n){
+    document.body.scrollTop = n;
+}
+
 // 暴露函数
 module.exports = {
    "goBack"  : goBack,
 	 "upDownS" : upDownS,
-	 "checkFil": checkFil
+	 "checkFil": checkFil,
+	 "scrollAnchor": scrollAnchor
 };

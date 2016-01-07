@@ -2,8 +2,26 @@
 	<div class="car-buy-list">
 		<tmpl:map list="${carList}" id-getter="{item.id}">
 			<div class="car-buy-top">
-				<div class="car-showPics">
+				<div class="car-show-box">
 					<img src="${item.picURL}" style="width:100%" />
+					<div class="car-showTXT-wrapper">
+					    <div class="car-showTXT-left">
+					    	<p class="car-showTXT-speed">${item.speed}</p>
+					    	<p class="car-showTXT-date">${item.date}</p>
+					    </div>
+					    <i class="slip"></i>
+					    <div class="car-showTXT-right">
+                            <p class="car-showTXT-price">${item.price}<span style="font-size:12px"> 万</span></p>
+					    </div>
+					</div>
+					<div class="buttons">
+						<div class="buttons-wrapper">
+							<span index="1" class="on"></span>
+							<span index="2"></span>
+							<span index="3"></span>
+							<span index="4"></span>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="car-buy-bottom">

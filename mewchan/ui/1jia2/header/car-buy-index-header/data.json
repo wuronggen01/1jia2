@@ -2,7 +2,8 @@
 	"carHeader" :[{
 		"id"           : 1,
 		"returnURL"    : "/1jia2/header/car-buy-index-header/res/return.png",
-		"headerTXT"    : "买车"
+		"headerTXT"    : "买车",
+		"searchURL"    : "/1jia2/header/car-buy-index-header/res/search.png"
 	}],
 	"nav"       :[{
 		  "id"         : 1,
@@ -54,55 +55,101 @@
 	},{
 		  "id"         : 3,
 	    "key"        : "品牌",
-			"filterKw"    : [{
-					"id"          : 1,
-					"kw"          : "不限"
-					},{
-					"id"          : 2,
-					"kw"          : "5万以下"
-					},{
-					"id"          : 3,
-					"kw"          : "10万-15万"
-					},{
-					"id"          : 4,
-					"kw"          : "15万-20万"
-					},{
-					"id"          : 5,
-					"kw"          : "20万-30万"
-					},{
-					"id"          : 6,
-					"kw"          : "30万-40万"
-					},{
-					"id"          : 7,
-					"kw"          : "40万-50万"
-					},{
-					"id"          : 8,
-					"kw"          : "50万以上"
-					},{
-							"id"          : 9,
-							"kw"          : "不限"
-							},{
-							"id"          : 10,
-							"kw"          : "5万以下"
-							},{
-							"id"          : 11,
-							"kw"          : "10万-15万"
-							},{
-							"id"          : 12,
-							"kw"          : "15万-20万"
-							},{
-							"id"          : 13,
-							"kw"          : "20万-30万"
-							},{
-							"id"          : 14,
-							"kw"          : "30万-40万"
-							},{
-							"id"          : 15,
-							"kw"          : "40万-50万"
-							},{
-							"id"          : 16,
-							"kw"          : "50万以上"
-							}]
+			"filterKwA"    : [{
+				"id"          : 1,
+				"kw"          : "奥迪",
+				"logoURL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
+				}],
+			"filterKwB"    : [{
+				"id"          : 1,
+				"kw"          : "别克",
+				"logoURL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
+				},{
+				"id"          : 2,
+				"kw"          : "别克",
+				"logoURL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
+				},{
+				"id"          : 3,
+				"kw"          : "别克",
+				"logoURL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
+				},{
+				"id"          : 4,
+				"kw"          : "别克",
+				"logoURL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
+				},{
+				"id"          : 5,
+				"kw"          : "别克",
+				"logoURL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
+				},{
+				"id"          : 6,
+				"kw"          : "别克",
+				"logoURL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
+				},{
+				"id"          : 7,
+				"kw"          : "别克",
+				"logoURL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
+				},{
+				"id"          : 8,
+				"kw"          : "别克",
+				"logoURL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
+				},{
+				"id"          : 9,
+				"kw"          : "别克",
+				"logoURL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
+				},{
+				"id"          : 10,
+				"kw"          : "别克",
+				"logoURL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
+				},{
+				"id"          : 11,
+				"kw"          : "别克",
+				"logoURL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
+				}],
+				"filterKwC"    : [{
+				"id"          : 1,
+				"kw"          : "长安",
+				"logoURL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
+				},{
+				"id"          : 2,
+				"kw"          : "长安",
+				"logoURL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
+				},{
+				"id"          : 3,
+				"kw"          : "长安",
+				"logoURL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
+				},{
+				"id"          : 4,
+				"kw"          : "长安",
+				"logoURL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
+				},{
+				"id"          : 5,
+				"kw"          : "长安",
+				"logoURL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
+				},{
+				"id"          : 6,
+				"kw"          : "长安",
+				"logoURL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
+				},{
+				"id"          : 7,
+				"kw"          : "长安",
+				"logoURL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
+				},{
+				"id"          : 8,
+				"kw"          : "长安",
+				"logoURL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
+				},{
+				"id"          : 9,
+				"kw"          : "长安",
+				"logoURL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
+				},{
+				"id"          : 10,
+				"kw"          : "长安",
+				"logoURL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
+				},{
+				"id"          : 11,
+				"kw"          : "长安",
+				"logoURL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
+				}]
 	},{
 	  	"id"         : 4,
 			"key"        : "里程",
@@ -123,5 +170,6 @@
 				"kw"          : "10万公里以下"
 				}]
 	}],
-	"downURL"   :   "/1jia2/header/car-buy-index-header/res/down.png"
+	"downURL"   :   "/1jia2/header/car-buy-index-header/res/down.png",
+	"logo1URL"    : "/1jia2/header/car-buy-index-header/res/logo1.png"
 }
