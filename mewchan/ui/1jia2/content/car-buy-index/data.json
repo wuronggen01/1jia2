@@ -1,8 +1,9 @@
 {
 	"carList"  :  [{
 		"id"       :  1,
-		"speed"  :  "2.5万公里",
-		"date"     :  "2015年07月",
+		"speed"  :  "2.5",
+		"year"     :  "2015",
+		"month"    :  "07",
 		"price"    :  "19.5",
 		"brand"    :  "别克",
 		"series"   :  "君威",
@@ -10,8 +11,9 @@
 		"picURL"   :  "/1jia2/content/car-buy-index/res/car.jpg"
 		},{
 		"id"       :  2,
-		"speed"  :  "2.5万公里",
-		"date"     :  "2015年07月",
+		"speed"  :  "2.5",
+		"year"     :  "2015",
+		"month"    :  "07",
 		"price"    :  "19.5",
 		"brand"    :  "别克",
 		"series"   :  "君威",

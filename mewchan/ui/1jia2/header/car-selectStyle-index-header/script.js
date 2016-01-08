@@ -7,7 +7,6 @@ var goBack = function(page){
 var upDownS = function(){
 	var order = $(this.element).attr("order");
 	var hg = parseInt($(window).height()) - 107;
-	var thisElement = $(this.element);
 
 	//遍历是否有动画
 	var animated = false;
@@ -23,63 +22,33 @@ var upDownS = function(){
 	if($(this.element).parent().hasClass("up")){
 		$(".header-nav-box p.header-nav").find(".header-optionBox").each(function(){
 			if(parseInt($(this).css("height") ) > 0){
-				$(this).animate({ height : "0px"},300,function(){
-					$(".header-film").css("display","none");
-				})
+				$(this).animate({ height : "0px"},200)
 			}
 		});
 		$(this.element).parent().removeClass("up");
-	    $(".check-anchor").css("display","none");
 		return;
 	}
 
 	//如果点击非打开的按钮
-	//先none掉check-anchor
-	$(".check-anchor").css("display","none");
-	// 关闭
+	// 先关闭
 	$(".header-nav-box p.header-nav").each(function(){
 		if($(this).hasClass("up")){
 			$(this).removeClass("up");
 		}
 	});
-	var state = 0;
-	
+
 	$(".header-nav-box p.header-nav").find(".header-optionBox").each(function(){
-		
 		if(parseInt($(this).css("height") ) > 0){
-			state =1;
-			$(this).animate({ height : "0px"},300,function(){
-				$(this).parent().css("display","none");
-				thisElement.next().css("display","block");
-		    	thisElement.parent().find(".header-optionBox").animate({
-				height : hg
-				},200,function(){
-					$(this).parent().css("background-color","rgba(0,0,0,0.5)");
-				});
-			    if(order == 3){
-			    	setTimeout("$('.check-anchor').css('display','block')",300);
-			    }
-
-				thisElement.parent().addClass("up");
-					});
-				}
+			$(this).animate({ height : "0px"},200);
+		}
 	});
-
-    //跳出film
-    if(!state){
-    	$(this.element).next().css("display","block");
-    	$(this.element).parent().find(".header-optionBox").animate({
+	console.log(hg);
+	$(this.element).parent().find(".header-optionBox").animate({
 		height : hg
-		},300,function(){
-			$(this).parent().css("background-color","rgba(0,0,0,0.5)");
-		});
-	    if(order == 3){
-	    	setTimeout("$('.check-anchor').css('display','block')",300);
-	    }
+	},200);
 
-		$(this.element).parent().addClass("up");
-    }
-	
+
+	$(this.element).parent().addClass("up");
 }
 
 var checkFil = function(){

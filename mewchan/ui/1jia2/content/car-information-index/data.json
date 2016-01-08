@@ -5,12 +5,14 @@
 		"id"   : 1,
 		"key"  : "品牌车系",
 		"value": "奥迪A4L",
-		"goURL"		: "/1jia2/content/car-information-index/res/go.png"
+		"goURL"		: "/1jia2/content/car-information-index/res/go.png",
+		"switchTo"  : "car-selectBrand-index"
 	},{
 		"id"   : 2,
 		"key"  : "车型",
 		"value": "30TFSI 1.8T 手动 舒适型",
-		"goURL"		: "/1jia2/content/car-information-index/res/go.png"
+		"goURL"		: "/1jia2/content/car-information-index/res/go.png",
+		"switchTo"  : "car-selectStyle-index"
 	},{
 		"id"   : 3,
 		"key"  : "车牌号码",

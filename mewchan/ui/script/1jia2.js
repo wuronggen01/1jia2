@@ -9,7 +9,6 @@
 
 $.uiReady(function() {
 
-
     $.myApp = new CoolCTO();
 
     $.currentActivity.configure({
@@ -115,3 +114,4 @@ var outputChannels = function(storyboard) {
 
     return cacheObj;
 }
+

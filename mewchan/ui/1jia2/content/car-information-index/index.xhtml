@@ -1,6 +1,6 @@
 <div  id="car-information-list" >
 	<tmpl:map list="${information}" id-getter="{item.id}">
-		<div class="car-information">
+		<div class="car-information" tmpl:on-click="menuSwitch('car-selectBrand-index')">
 			<div class="car-information-left">
 				<p>${item.key}</p>
 			</div>

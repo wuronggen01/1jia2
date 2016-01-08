@@ -5,7 +5,7 @@
 .storyboard-page{
     background-color: #e6e6e6;
     width : 100%;
-    height: 109px;
+    height: 64px;
     border: 1px solid #cccccc;
     overflow: visible;
 }
@@ -13,7 +13,7 @@
 .car-information-header{
 	background-color: #e6e6e6;
 	text-align:center;
-	height:89px;
+	height:45px;
 	position: relative;
 }
 
@@ -80,6 +80,10 @@ i.slip:last-child{
 
 }
 
+.header-nav-box p.up .header-optionBox{
+	border-top:1px solid #cccccc;
+}
+
 .header-nav-box .slip{
 	border-left:1px solid #ccc;
 	border-right:1px solid #fff;
@@ -91,30 +95,19 @@ i.slip:last-child{
 
 /*下拉选项框*/
 
-/*film  -begin-*/
-.header-film{
-	width: 102%;
-	height: 800px;
-	background: rgba(0,0,0,0.5);
-	position: fixed;
-	left: -1px;
-	top: 109px;
-	display: none;
-}
-/*film  -end-*/
 
 .header-optionBox{
 	width: 101%;
 	height: 0px;
-	/*border-bottom:1px solid #cccccc;
-	border-top:none;*/
+	border-bottom:1px solid #cccccc;
+	border-top:none;
 	background: #ffffff;
 	position:fixed;
 	top:107px;
 	left:-1px;
 	overflow-y: auto;
 	overflow-x: hidden;
-	background: rgba(0,0,0,0);
+	background: rgba(0,0,0,0.5);
 	z-index: -1;
 }
 
@@ -186,4 +179,3 @@ i.slip:last-child{
 	display:block;
 }
 /*品牌的筛选页面 -end-*/
-

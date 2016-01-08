@@ -1,5 +1,6 @@
 *{
 	font-family:"华文细黑";
+	box-sizing: border-box;
 }
 
 .storyboard-page{
@@ -72,3 +73,38 @@
 	color: #333;
 }
 /*品牌样式 -end-*/
+
+/*models -begin-*/
+.brand-models-box{
+	position: fixed;
+	top: 67px;
+	right: 0px;
+	width: 0px;
+	height: 800px;
+	background: #fff;
+}
+
+.models-wrapper{
+	height: 44px;
+	width: 100%;
+	border-bottom: 1px solid #e6e6e6;
+	margin-left: 15px;
+	padding-top: 15px;
+}
+
+.brand-models-box div.checked{
+	color: #ff7200;
+}
+
+/*models -end-*/
+/*film -begin-*/
+.selectBrand-film{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.6);
+	display: none;
+}
+/*film -end-*/

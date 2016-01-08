@@ -1,0 +1,48 @@
+{
+	"styleList" : [{
+		"id"        : 1,
+		"style"     : "2016款 35TFSI 自动标准型"
+		},{
+		"id"        : 2,
+		"style"     : "2016款 35TFSI 自动标准型"
+		},{
+		"id"        : 3,
+		"style"     : "2016款 35TFSI 自动标准型"
+		},{
+		"id"        : 4,
+		"style"     : "2016款 35TFSI 自动标准型"
+		},{
+		"id"        : 5,
+		"style"     : "2016款 35TFSI 自动标准型"
+		},{
+		"id"        : 6,
+		"style"     : "2016款 35TFSI 自动标准型"
+		},{
+		"id"        : 7,
+		"style"     : "2016款 35TFSI 自动标准型"
+		},{
+		"id"        : 8,
+		"style"     : "2016款 35TFSI 自动标准型"
+		},{
+		"id"        : 9,
+		"style"     : "2016款 35TFSI 自动标准型"
+		},{
+		"id"        : 10,
+		"style"     : "2016款 35TFSI 自动标准型"
+		},{
+		"id"        : 11,
+		"style"     : "2016款 35TFSI 自动标准型"
+		},{
+		"id"        : 12,
+		"style"     : "2016款 35TFSI 自动标准型"
+		},{
+		"id"        : 13,
+		"style"     : "2016款 35TFSI 自动标准型"
+		},{
+		"id"        : 14,
+		"style"     : "2016款 35TFSI 自动标准型"
+		}],
+	"goURL"     : "/1jia2/content/car-buy-index/res/go.png",
+	"header"    : "car-selectStyle-index-header",
+	"bottom"    : "hideTab"	
+}

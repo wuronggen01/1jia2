@@ -2,16 +2,26 @@
 	<div class="car-buy-list">
 		<tmpl:map list="${carList}" id-getter="{item.id}">
 			<!-- <div class="car-buy-top"> -->
-				<div class="car-show-box">
-					<img src="${item.picURL}" style="width:100%" />
+				<div class="car-show-box"  >
+				    <div class="image-list" >
+						<img src="${item.picURL}" style="width:16.66%" alt="1" tmpl:on-click="animate()"/>
+						<img src="${item.picURL}" style="width:16.66%" alt="1" tmpl:on-click="animate()"/>
+						<img src="${item.picURL}" style="width:16.66%" alt="2" tmpl:on-click="animate()"/>
+						<img src="${item.picURL}" style="width:16.66%" alt="3" tmpl:on-click="animate()"/>
+						<img src="${item.picURL}" style="width:16.66%" alt="4" tmpl:on-click="animate()"/>
+						<img src="${item.picURL}" style="width:16.66%" alt="4" tmpl:on-click="animate()"/>
+					</div>	
 					<div class="car-showTXT-wrapper">
 					    <div class="car-showTXT-left">
-					    	<p class="car-showTXT-speed">${item.speed}</p>
-					    	<p class="car-showTXT-date">${item.date}</p>
+					    	<p><span class="car-showTXT-speed">${item.speed}</span>万公里</p>
+					    	<p>
+					    	    <span class="car-showTXT-date">${item.year}</span>年
+					    	    <span class="car-showTXT-date">${item.month}</span>月
+					    	</p>
 					    </div>
 					    <i class="slip"></i>
 					    <div class="car-showTXT-right">
-                            <p class="car-showTXT-price">${item.price}<span style="font-size:12px"> 万</span></p>
+                            <p><span class="car-showTXT-price">${item.price}</span><span style="font-size:12px"> 万</span></p>
 					    </div>
 					</div>
 					<div class="buttons">
