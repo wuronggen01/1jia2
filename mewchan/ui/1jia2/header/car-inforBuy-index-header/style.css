@@ -1,0 +1,72 @@
+*{
+	font-family:"华文细黑";
+}
+
+.block-20{
+	background: transparent;
+}
+
+.storyboard-page{
+    background-color: #e6e6e6;
+    width : 100%;
+    height: 210px;
+    border: 1px solid #cccccc;
+    overflow: hidden;
+    padding-top: 0 ;
+}
+
+
+.car-inforBuy-header{
+	width: 100%;
+	height: 210px;
+	overflow: hidden;
+	position: relative;
+}
+
+.header-nav-wrapper{
+	width: 100%;
+	position: absolute;
+}
+
+.header-nav-wrapper img{
+	margin: 0 15px;
+}
+
+.return{
+	float: left;
+}
+
+.collect{
+	float: right;
+}
+
+.header-imgBox{
+	width: 100%;
+	height: auto;
+	position: absolute;
+	left: 0;
+	top: 0px;
+	z-index: -1;
+}
+
+.header-number-wrapper{
+	position: absolute;
+	bottom: 5px;
+	width: 100%;
+	height: 29px;
+	background: rgba(0,0,0,0.5);
+	padding-top: 6px;
+	color: #fff;
+}
+
+.header-number-wrapper p{
+	padding-left: 15px;
+}
+
+.header-number-wrapper .number{
+	padding-top: 1px;
+}
+
+.header-number-wrapper .page{
+	float: right;
+}

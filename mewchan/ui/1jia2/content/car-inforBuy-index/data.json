@@ -1,0 +1,51 @@
+{
+	"header" : "hideNav",
+	"bottom" : "car-inforBuy-index-Tab",
+	"navnormal" : true,
+	"navTabNoNav" : true,
+	"returnURL" : "/1jia2/header/car-inforBuy-index-header/res/return.png",
+	"collectURL": "/1jia2/header/car-inforBuy-index-header/res/collect.png",
+	"imgURL"    : "/1jia2/content/car-inforBuy-index/res/car2.png",
+	"number"    : "coolcto-001",
+	"carName"   : "大众途观",
+	"carStyle"  : "2012款1.8TSI手自一体四驱精英版",
+	"year"      : "2013",
+	"month"     : "06",
+	"speed"     : "4.5",
+	"gear"      : "国四",
+	"price1"    : "21.80",
+	"price2"    : "6500",
+	"price3"    : "27.18",
+    "ownerName" : "曹先生",
+    "ownerJob"  : "公司职员",
+    "ownerAdd"  : "静安",
+	"ownerDes"  : "我的车棒棒哒，买买买。我的车棒棒哒，买买买。我的车棒棒哒，买买买。我的车棒棒哒，买买买。我的车棒棒哒，买买买。我的车棒棒哒，买买买",
+	"year1"     : "2016",
+	"month1"    : "12",
+	"year2"     : "2014",
+	"month2"    : "12",
+    "Times"     : "0",
+    "avatarURL" : "/1jia2/content/car-inforBuy-index/res/avatar.png",
+    "phoneURL"  : "/1jia2/content/car-inforBuy-index/res/phone.png",
+    "name"      : "郝车",
+    "honor"     : "资深评估师",
+    "statusURL" : "/1jia2/content/car-inforBuy-index/res/status.png",
+    "accident"  : "无",
+    "watered"   : "无",
+    "burn"      : "无",
+    "suggest"   : "买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买买",
+    "ensureList": [{
+		"id"        : 1,
+		"ensureURL" : "/1jia2/content/car-inforBuy-index/res/ensure.png",
+		"ensure"    : "一年2万公里质量保证"
+		},{
+        "id"        : 2,
+        "ensureURL" : "/1jia2/content/car-inforBuy-index/res/ensure.png",
+        "ensure"    : "交易担保"
+		},{
+        "id"        : 3,
+        "ensureURL" : "/1jia2/content/car-inforBuy-index/res/ensure.png",
+        "ensure"    : "14天退车承诺"
+		}],
+		"EnsureURL" : "/1jia2/content/car-inforBuy-index/res/ensure.png"
+}

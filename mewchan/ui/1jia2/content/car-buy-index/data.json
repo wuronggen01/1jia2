@@ -8,7 +8,8 @@
 		"brand"    :  "别克",
 		"series"   :  "君威",
 		"style"    :  "2012款 2.0L 自动舒适版",
-		"picURL"   :  "/1jia2/content/car-buy-index/res/car.jpg"
+		"picURL1"   :  "/1jia2/content/car-buy-index/res/car.jpg",
+		"picURL2"   :  "/1jia2/content/car-buy-index/res/car2.png"
 		},{
 		"id"       :  2,
 		"speed"  :  "2.5",
@@ -18,7 +19,8 @@
 		"brand"    :  "别克",
 		"series"   :  "君威",
 		"style"    :  "2012款 2.0L 自动舒适版",
-		"picURL"   :  "/1jia2/content/car-buy-index/res/car.jpg"
+		"picURL1"   :  "/1jia2/content/car-buy-index/res/car.jpg",
+		"picURL2"   :  "/1jia2/content/car-buy-index/res/car2.png"
 			}],
 	"goURL"     : "/1jia2/content/car-buy-index/res/go.png",
 	"header"    : "car-buy-index-header",

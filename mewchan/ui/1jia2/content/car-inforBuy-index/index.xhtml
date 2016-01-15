@@ -1,0 +1,103 @@
+<div class="wrapper">
+	<div class="car-inforBuy-header">	
+		<div class="header-nav-wrapper">
+			<img class="return" src="${returnURL}" width="21" height="21"/>
+			<img class="collect" src="${collectURL}" width="21" height="21" />
+		</div>
+		<div class="header-imgBox">
+			<img src="${imgURL}" style="width:100%" />
+			<div class="header-number-wrapper">
+				<p>车辆编号:&nbsp;&nbsp;<span class="number">${number}</span><span class="page">1/36</span></p>
+			</div>
+		</div>
+		<div class="header-information-box">
+			<div class="information-top">
+			    <p class="infor-detail">详细参数>></p>
+				<h2>${carName}</h2>
+				<p>${carStyle}</p>
+			</div>
+			<div class="information-bottom">
+				<p>
+					<span class="top-2" >${year}</span>年<span class="top-2">${month}</span>
+					    <span style="padding-right:10px;border-right: 1px solid #e6e6e6">月上牌</span>
+                    <span class="top-2" style="padding-left:9px;">${speed}</span>
+                        <span style="padding-right:11px;border-right: 1px solid #e6e6e6">万公里</span>
+                    <span style="padding-left:7px;">${gear}</span>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="car-inforBuy-box1">
+        <div class="box1-top">
+            <p><span class="top-2 price1 price">${price1}</span><span style="color:#ff7200">万&nbsp;&nbsp;+&nbsp;&nbsp;</span><span class="top-2 price">${price2}</span> (服务费，车价*3%)</p>
+            <p style="margin-top:5px">新车价格: <span class="top-2 price">${price3}</span>万元 (含税)</p>
+        </div>
+        <div class="box1-bottom">
+            <tmpl:map list="${ensureList}" id-getter="{item.id}" item-variant-name="item"> 
+            <p style="display:inline-block"><img src="${item.ensureURL}" width="12" height="12"/><span>${item.ensure}</span></p>
+            </tmpl:map>
+        </div>
+	</div>
+	<div class="car-inforBuy-box2">
+		<div class="box2-top">
+		    <div class="box2-top-right">
+		        <p style="display:inline-block"><img src="/1jia2/content/car-inforBuy-index/res/owner.png" width="11"/>${ownerName}</p>
+		        <p style="display:inline-block"><img src="/1jia2/content/car-inforBuy-index/res/job.png" width="13" />${ownerJob}</p>
+		        <p style="display:inline-block"><img src="/1jia2/content/car-inforBuy-index/res/address.png" width="9" />${ownerAdd}</p>
+		    </div>
+		    <h2>车主自述</h2>
+		</div>
+		<div class="box2-middle">
+		    <p>${ownerDes}</p>
+		</div>
+		<div class="box2-bottom">
+		    <p class="box2-bottom-deadLine">
+		        <span>·${year1}</span>年<span>${month1}</span>月年检到期&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		        <span>·${year2}</span>年<span>${month2}</span>月交强险到期
+		    </p>
+		    <p class="box2-bottom-deadLine">
+                <span>·${year2}</span>年<span>${month2}</span>月商险到期&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		        <span>·${times}</span>次过户记录
+		    </p>
+		</div>
+	</div>
+	<div class="car-inforBuy-box3">
+        <div class="box3-part1">
+            <p class="infor-details">评估详情>></p>
+            <h2>检测保障</h2>
+        </div>
+        <div class="box3-part2">
+            <div class="box3-part2-left">
+            	<img src="${avatarURL}" width="49" />
+	            <div class="part2-left-txt">	
+	            	<p>${name}</p>
+	            	<p>${honor}</p>
+	            </div>	
+            </div>
+            <div class="box3-part2-right">
+            	<img src="${phoneURL}" width="45" />
+            </div>
+        </div>
+        <div class="box3-part3">
+            <div class="part3-left">
+            	<span>车况:</span><img src="${statusURL}" height="10"/>
+            </div>
+            <div class="part3-right">
+            	<p style="display: inline-block;">重大事故:&nbsp;&nbsp;<span>${accident}</span></p>
+            	<p style="display: inline-block;">泡水:&nbsp;&nbsp;<span>${watered}</span></p>
+            	<p style="display: inline-block;">火烧:&nbsp;&nbsp;<span>${burn}</span></p>
+            </div>
+        </div>
+        <div class="box3-part4">
+            <p><span>外观检测</span><span class="right">38项<img src="${EnsureURL}" width="12" /></span></p>
+            <p><span>内饰检测</span><span class="right">45项<img src="${EnsureURL}" width="12" /></span></p>
+            <p><span>事故检测</span><span class="right">53项<img src="${EnsureURL}" width="12" /></span></p>
+            <p><span>设备检测</span><span class="right">31项<img src="${EnsureURL}" width="12" /></span></p>
+            <p><span>机械检测</span><span class="right">13项<img src="${EnsureURL}" width="12" /></span></p>
+        </div>
+        <div class="box3-part5">
+        	<h3 class="part5-title">评估师建议</h3>
+        	<p class="part5-content">${suggest}</p>
+        </div>
+	</div>
+</div>

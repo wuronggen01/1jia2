@@ -61,3 +61,8 @@ span.color{
 	right:71px;
 	background:#000;
 }
+
+.box2-top-right p img{
+	position: relative;
+	top: 1px;
+}

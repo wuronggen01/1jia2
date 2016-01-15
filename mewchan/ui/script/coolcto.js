@@ -69,12 +69,17 @@ var Navbar = function(headerSB, bottomSB, navTabHeight) {
         },
         "willPageEnterForestage": function(storyboard, page, data) {
             // padding-top css
-            if (data.navnormal) {
+            if (data.navnormal     ) {
                 var navTabHeightNormal = 20;
                 if ($('body').hasClass('system-android')){
                     navTabHeightNormal = 25;
                 }
+                if (data.navTabNoNav) {
+                    $(storyboard.dom).find('.storyboard-page').css('padding-top',  '0px');
+                } else {
+
                  $(storyboard.dom).find('.storyboard-page').css('padding-top', navTabHeightNormal + 'px');
+                }
             } else {
                 $(storyboard.dom).find('.storyboard-page').css('padding-top', navTabHeight + 'px');
             }

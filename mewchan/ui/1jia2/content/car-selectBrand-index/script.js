@@ -7,6 +7,7 @@ var openCheckModel = function(){
 		$(this).addClass("modelsBox-on");
 	});
 	$(".check-anchor").animate({"right":"-10px"},200);
+	$(".wrapper").css("overflow-y","hidden");
 }
 
 var closeCheckModel = function(){
@@ -19,6 +20,7 @@ var closeCheckModel = function(){
 	});
 
 	$(".check-anchor").animate({"right":"10px"},200);
+	$(".wrapper").css("overflow-y","auto");
 }
 
 var checkModel = function(){
@@ -34,6 +36,7 @@ var checkModel = function(){
 var initPage = function () {
     
     this.page.$(".wrapper").css("height",$(window).height()-64);
+    
 };
 
 // 暴露函数
